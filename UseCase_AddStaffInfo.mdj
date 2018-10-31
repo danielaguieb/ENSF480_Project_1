@@ -25,7 +25,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFmx2lCsuLR+Fk="
 							},
-							"name": "UseCase_AddCompanyStaffInfo",
+							"name": "UseCase_AddStaffInfo",
 							"ownedViews": [
 								{
 									"_type": "UMLSeqLifelineView",
@@ -374,11 +374,11 @@
 										"$ref": "AAAAAAFmx2lCsuLSHxY="
 									},
 									"font": "Arial;13;0",
-									"left": 448,
-									"top": 32,
+									"left": 368,
+									"top": 16,
 									"width": 241,
 									"height": 80,
-									"text": "Add Company Staff Info Use Case"
+									"text": "Add Staff Info Use Case"
 								},
 								{
 									"_type": "UMLSeqMessageView",
@@ -793,22 +793,9 @@
 								"$ref": "AAAAAAFmx2lCsuLR+Fk="
 							},
 							"name": "System",
-							"represent": {
-								"$ref": "AAAAAAFmx22FaeNaZjI="
-							},
 							"isMultiInstance": false
 						}
 					]
-				}
-			],
-			"attributes": [
-				{
-					"_type": "UMLAttribute",
-					"_id": "AAAAAAFmx22FaeNaZjI=",
-					"_parent": {
-						"$ref": "AAAAAAFmx2lCsuLQJuE="
-					},
-					"name": "Role1"
 				}
 			]
 		}
