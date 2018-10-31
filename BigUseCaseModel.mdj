@@ -13669,14 +13669,6 @@
 					"name": "Swap Document Formatting Algorithm"
 				},
 				{
-					"_type": "UMLUseCaseSubject",
-					"_id": "AAAAAAFmvDyn55hpRfQ=",
-					"_parent": {
-						"$ref": "AAAAAAFmsg4Y1EPWHoM="
-					},
-					"name": "UseCaseSubject1"
-				},
-				{
 					"_type": "UMLUseCase",
 					"_id": "AAAAAAFmvD5BvMO3WwI=",
 					"_parent": {
@@ -13981,24 +13973,6 @@
 							}
 						}
 					]
-				}
-			]
-		},
-		{
-			"_type": "UMLModel",
-			"_id": "AAAAAAFmvLif/XYR+u8=",
-			"_parent": {
-				"$ref": "AAAAAAFF+h6SjaM2Hec="
-			},
-			"name": "Model2",
-			"ownedElements": [
-				{
-					"_type": "UMLUseCaseDiagram",
-					"_id": "AAAAAAFmvLif/XYSgJs=",
-					"_parent": {
-						"$ref": "AAAAAAFmvLif/XYR+u8="
-					},
-					"name": "UseCaseDiagram1"
 				}
 			]
 		}
