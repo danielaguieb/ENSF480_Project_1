@@ -604,6 +604,117 @@
 								},
 								{
 									"_type": "UMLSeqMessageView",
+									"_id": "AAAAAAFmx7YHoqc0wBE=",
+									"_parent": {
+										"$ref": "AAAAAAFmx2lCsuLSHxY="
+									},
+									"model": {
+										"$ref": "AAAAAAFmx7YHoqcztsE="
+									},
+									"subViews": [
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAFmx7YHo6c1rSk=",
+											"_parent": {
+												"$ref": "AAAAAAFmx7YHoqc0wBE="
+											},
+											"model": {
+												"$ref": "AAAAAAFmx7YHoqcztsE="
+											},
+											"font": "Arial;13;0",
+											"left": 846,
+											"top": 296,
+											"width": 110.3349609375,
+											"height": 13,
+											"alpha": 1.2924957055256294,
+											"distance": 72.80109889280519,
+											"hostEdge": {
+												"$ref": "AAAAAAFmx7YHoqc0wBE="
+											},
+											"edgePosition": 1,
+											"text": "4 : Add in Staff Info"
+										},
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAFmx7YHo6c2IhY=",
+											"_parent": {
+												"$ref": "AAAAAAFmx7YHoqc0wBE="
+											},
+											"model": {
+												"$ref": "AAAAAAFmx7YHoqcztsE="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 856,
+											"top": 275,
+											"height": 13,
+											"alpha": 1.5707963267948966,
+											"distance": 25,
+											"hostEdge": {
+												"$ref": "AAAAAAFmx7YHoqc0wBE="
+											},
+											"edgePosition": 1
+										},
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAFmx7YHo6c3RMw=",
+											"_parent": {
+												"$ref": "AAAAAAFmx7YHoqc0wBE="
+											},
+											"model": {
+												"$ref": "AAAAAAFmx7YHoqcztsE="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 822,
+											"top": 276,
+											"height": 13,
+											"alpha": -1.5707963267948966,
+											"distance": 10,
+											"hostEdge": {
+												"$ref": "AAAAAAFmx7YHoqc0wBE="
+											},
+											"edgePosition": 1
+										},
+										{
+											"_type": "UMLActivationView",
+											"_id": "AAAAAAFmx7YHo6c4Lro=",
+											"_parent": {
+												"$ref": "AAAAAAFmx7YHoqc0wBE="
+											},
+											"model": {
+												"$ref": "AAAAAAFmx7YHoqcztsE="
+											},
+											"font": "Arial;13;0",
+											"left": 796,
+											"top": 292,
+											"width": 14,
+											"height": 61
+										}
+									],
+									"font": "Arial;13;0",
+									"head": {
+										"$ref": "AAAAAAFmx22FauNiLCI="
+									},
+									"tail": {
+										"$ref": "AAAAAAFmx22FauNiLCI="
+									},
+									"points": "802:272;832:272;832:292;809:292",
+									"nameLabel": {
+										"$ref": "AAAAAAFmx7YHo6c1rSk="
+									},
+									"stereotypeLabel": {
+										"$ref": "AAAAAAFmx7YHo6c2IhY="
+									},
+									"propertyLabel": {
+										"$ref": "AAAAAAFmx7YHo6c3RMw="
+									},
+									"activation": {
+										"$ref": "AAAAAAFmx7YHo6c4Lro="
+									}
+								},
+								{
+									"_type": "UMLSeqMessageView",
 									"_id": "AAAAAAFmx6DqWuQA6fk=",
 									"_parent": {
 										"$ref": "AAAAAAFmx2lCsuLSHxY="
@@ -622,8 +733,8 @@
 												"$ref": "AAAAAAFmx6DqWeP/OF8="
 											},
 											"font": "Arial;13;0",
-											"left": 406,
-											"top": 292,
+											"left": 409,
+											"top": 340,
 											"width": 127.14990234375,
 											"height": 13,
 											"alpha": 1.5707963267948966,
@@ -632,7 +743,7 @@
 												"$ref": "AAAAAAFmx6DqWuQA6fk="
 											},
 											"edgePosition": 1,
-											"text": "4 : Confirm Admission"
+											"text": "5 : Confirm Admission"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -645,8 +756,8 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 469,
-											"top": 307,
+											"left": 472,
+											"top": 355,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 25,
@@ -666,8 +777,8 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 470,
-											"top": 272,
+											"left": 473,
+											"top": 320,
 											"height": 13,
 											"alpha": -1.5707963267948966,
 											"distance": 10,
@@ -688,7 +799,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": 151,
-											"top": 288,
+											"top": 336,
 											"width": 14,
 											"height": 25
 										}
@@ -700,7 +811,7 @@
 									"tail": {
 										"$ref": "AAAAAAFmx22FauNiLCI="
 									},
-									"points": "789:288;151:288",
+									"points": "796:336;151:336",
 									"nameLabel": {
 										"$ref": "AAAAAAFmx6DqWuQBEPs="
 									},
@@ -753,6 +864,20 @@
 								"$ref": "AAAAAAFmx2lCsuLR+Fk="
 							},
 							"name": "Confirm Info Is New",
+							"source": {
+								"$ref": "AAAAAAFmx22FaeNbZqQ="
+							},
+							"target": {
+								"$ref": "AAAAAAFmx22FaeNbZqQ="
+							}
+						},
+						{
+							"_type": "UMLMessage",
+							"_id": "AAAAAAFmx7YHoqcztsE=",
+							"_parent": {
+								"$ref": "AAAAAAFmx2lCsuLR+Fk="
+							},
+							"name": "Add in Staff Info",
 							"source": {
 								"$ref": "AAAAAAFmx22FaeNbZqQ="
 							},
