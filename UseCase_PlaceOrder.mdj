@@ -1913,9 +1913,6 @@
 							},
 							"name": "Ordinary-Buyers",
 							"stereotype": "Actor",
-							"represent": {
-								"$ref": "AAAAAAFmsneOPuPy2/M="
-							},
 							"isMultiInstance": false
 						},
 						{
@@ -1925,30 +1922,9 @@
 								"$ref": "AAAAAAFmsnbCxePQedw="
 							},
 							"name": "Publication Management System",
-							"represent": {
-								"$ref": "AAAAAAFmsni96eQTsJ8="
-							},
 							"isMultiInstance": false
 						}
 					]
-				}
-			],
-			"attributes": [
-				{
-					"_type": "UMLAttribute",
-					"_id": "AAAAAAFmsneOPuPy2/M=",
-					"_parent": {
-						"$ref": "AAAAAAFmsnbCxOPPXPU="
-					},
-					"name": "Role1"
-				},
-				{
-					"_type": "UMLAttribute",
-					"_id": "AAAAAAFmsni96eQTsJ8=",
-					"_parent": {
-						"$ref": "AAAAAAFmsnbCxOPPXPU="
-					},
-					"name": "Role2"
 				}
 			]
 		}
