@@ -54,7 +54,7 @@
 														"$ref": "AAAAAAFm18yrLUI9358="
 													},
 													"font": "Arial;13;0",
-													"left": 149,
+													"left": 101,
 													"top": 45,
 													"width": 72.130859375,
 													"height": 13,
@@ -67,7 +67,7 @@
 														"$ref": "AAAAAAFm18yrLUI9358="
 													},
 													"font": "Arial;13;1",
-													"left": 149,
+													"left": 101,
 													"top": 60,
 													"width": 72.130859375,
 													"height": 13,
@@ -81,6 +81,7 @@
 													},
 													"visible": false,
 													"font": "Arial;13;0",
+													"left": -96,
 													"width": 106.20263671875,
 													"height": 13,
 													"text": "(from Interaction1)"
@@ -93,12 +94,13 @@
 													},
 													"visible": false,
 													"font": "Arial;13;0",
+													"left": -96,
 													"height": 13,
 													"horizontalAlignment": 1
 												}
 											],
 											"font": "Arial;13;0",
-											"left": 144,
+											"left": 96,
 											"top": 40,
 											"width": 82.130859375,
 											"height": 40,
@@ -125,14 +127,14 @@
 												"$ref": "AAAAAAFm18yrLEI7C/I="
 											},
 											"font": "Arial;13;0",
-											"left": 185,
+											"left": 137,
 											"top": 80,
 											"width": 1,
 											"height": 401
 										}
 									],
 									"font": "Arial;13;0",
-									"left": 144,
+									"left": 96,
 									"top": 40,
 									"width": 82.130859375,
 									"height": 441,
@@ -269,11 +271,11 @@
 										"$ref": "AAAAAAFm18r4CkIXwr8="
 									},
 									"font": "Arial;13;0",
-									"left": 272,
+									"left": 224,
 									"top": 16,
-									"width": 169,
+									"width": 217,
 									"height": 64,
-									"text": "Add Documents Use Case"
+									"text": "Add/Remove Documents Use Case"
 								},
 								{
 									"_type": "UMLSeqMessageView",
@@ -295,7 +297,7 @@
 												"$ref": "AAAAAAFm1+mn5EKoTTo="
 											},
 											"font": "Arial;13;0",
-											"left": 300,
+											"left": 276,
 											"top": 122,
 											"width": 148.87158203125,
 											"height": 13,
@@ -318,7 +320,7 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 374,
+											"left": 350,
 											"top": 107,
 											"height": 13,
 											"alpha": 1.5707963267948966,
@@ -339,7 +341,7 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 374,
+											"left": 350,
 											"top": 142,
 											"height": 13,
 											"alpha": -1.5707963267948966,
@@ -372,7 +374,7 @@
 									"tail": {
 										"$ref": "AAAAAAFm18yrLkJC6uA="
 									},
-									"points": "185:138;563:138",
+									"points": "137:138;563:138",
 									"nameLabel": {
 										"$ref": "AAAAAAFm1+mn5UKqKyU="
 									},
@@ -517,17 +519,17 @@
 												"$ref": "AAAAAAFm1+sUyELY4Kk="
 											},
 											"font": "Arial;13;0",
-											"left": 605,
+											"left": 598,
 											"top": 288,
 											"width": 236.2724609375,
 											"height": 13,
-											"alpha": 1.4108822163141612,
-											"distance": 125.60254774486066,
+											"alpha": 1.4014915628345797,
+											"distance": 118.69709347747316,
 											"hostEdge": {
 												"$ref": "AAAAAAFm1+sUyELZWto="
 											},
 											"edgePosition": 1,
-											"text": "3 : verify document not already in system"
+											"text": "3 : add/remove document"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -610,117 +612,6 @@
 								},
 								{
 									"_type": "UMLSeqMessageView",
-									"_id": "AAAAAAFm1+ukukLwKvY=",
-									"_parent": {
-										"$ref": "AAAAAAFm18r4CkIXwr8="
-									},
-									"model": {
-										"$ref": "AAAAAAFm1+ukukLvCgE="
-									},
-									"subViews": [
-										{
-											"_type": "EdgeLabelView",
-											"_id": "AAAAAAFm1+ukukLxujU=",
-											"_parent": {
-												"$ref": "AAAAAAFm1+ukukLwKvY="
-											},
-											"model": {
-												"$ref": "AAAAAAFm1+ukukLvCgE="
-											},
-											"font": "Arial;13;0",
-											"left": 613,
-											"top": 368,
-											"width": 100.4580078125,
-											"height": 13,
-											"alpha": 1.2679105029039046,
-											"distance": 67.05221845696084,
-											"hostEdge": {
-												"$ref": "AAAAAAFm1+ukukLwKvY="
-											},
-											"edgePosition": 1,
-											"text": "4 : add document"
-										},
-										{
-											"_type": "EdgeLabelView",
-											"_id": "AAAAAAFm1+ukukLyVdQ=",
-											"_parent": {
-												"$ref": "AAAAAAFm1+ukukLwKvY="
-											},
-											"model": {
-												"$ref": "AAAAAAFm1+ukukLvCgE="
-											},
-											"visible": false,
-											"font": "Arial;13;0",
-											"left": 624,
-											"top": 347,
-											"height": 13,
-											"alpha": 1.5707963267948966,
-											"distance": 25,
-											"hostEdge": {
-												"$ref": "AAAAAAFm1+ukukLwKvY="
-											},
-											"edgePosition": 1
-										},
-										{
-											"_type": "EdgeLabelView",
-											"_id": "AAAAAAFm1+ukukLzNJw=",
-											"_parent": {
-												"$ref": "AAAAAAFm1+ukukLwKvY="
-											},
-											"model": {
-												"$ref": "AAAAAAFm1+ukukLvCgE="
-											},
-											"visible": false,
-											"font": "Arial;13;0",
-											"left": 590,
-											"top": 348,
-											"height": 13,
-											"alpha": -1.5707963267948966,
-											"distance": 10,
-											"hostEdge": {
-												"$ref": "AAAAAAFm1+ukukLwKvY="
-											},
-											"edgePosition": 1
-										},
-										{
-											"_type": "UMLActivationView",
-											"_id": "AAAAAAFm1+ukukL0B4E=",
-											"_parent": {
-												"$ref": "AAAAAAFm1+ukukLwKvY="
-											},
-											"model": {
-												"$ref": "AAAAAAFm1+ukukLvCgE="
-											},
-											"font": "Arial;13;0",
-											"left": 563,
-											"top": 364,
-											"width": 14,
-											"height": 29
-										}
-									],
-									"font": "Arial;13;0",
-									"head": {
-										"$ref": "AAAAAAFm184aIUJkwrE="
-									},
-									"tail": {
-										"$ref": "AAAAAAFm184aIUJkwrE="
-									},
-									"points": "570:344;600:344;600:364;576:364",
-									"nameLabel": {
-										"$ref": "AAAAAAFm1+ukukLxujU="
-									},
-									"stereotypeLabel": {
-										"$ref": "AAAAAAFm1+ukukLyVdQ="
-									},
-									"propertyLabel": {
-										"$ref": "AAAAAAFm1+ukukLzNJw="
-									},
-									"activation": {
-										"$ref": "AAAAAAFm1+ukukL0B4E="
-									}
-								},
-								{
-									"_type": "UMLSeqMessageView",
 									"_id": "AAAAAAFm1+vVQEMH+Vg=",
 									"_parent": {
 										"$ref": "AAAAAAFm18r4CkIXwr8="
@@ -739,17 +630,17 @@
 												"$ref": "AAAAAAFm1+vVP0MG/oQ="
 											},
 											"font": "Arial;13;0",
-											"left": 278,
-											"top": 425,
-											"width": 197.26611328125,
+											"left": 218,
+											"top": 356,
+											"width": 256.51513671875,
 											"height": 13,
-											"alpha": 1.5707963267948966,
-											"distance": 10,
+											"alpha": 0.9600710335469431,
+											"distance": 12.206555615733702,
 											"hostEdge": {
 												"$ref": "AAAAAAFm1+vVQEMH+Vg="
 											},
 											"edgePosition": 1,
-											"text": "5 : Inform that Document is Added"
+											"text": "4 : Inform that Document is Added/Removed"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -762,8 +653,8 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 376,
-											"top": 440,
+											"left": 352,
+											"top": 371,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 25,
@@ -783,8 +674,8 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 377,
-											"top": 405,
+											"left": 353,
+											"top": 336,
 											"height": 13,
 											"alpha": -1.5707963267948966,
 											"distance": 10,
@@ -804,8 +695,8 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 185,
-											"top": 421,
+											"left": 137,
+											"top": 352,
 											"width": 14,
 											"height": 25
 										}
@@ -817,7 +708,7 @@
 									"tail": {
 										"$ref": "AAAAAAFm184aIUJkwrE="
 									},
-									"points": "570:421;185:421",
+									"points": "570:352;137:352",
 									"nameLabel": {
 										"$ref": "AAAAAAFm1+vVQEMISIQ="
 									},
@@ -869,21 +760,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFm18r4CkIWk0s="
 							},
-							"name": "verify document not already in system",
-							"source": {
-								"$ref": "AAAAAAFm184aIUJd0TI="
-							},
-							"target": {
-								"$ref": "AAAAAAFm184aIUJd0TI="
-							}
-						},
-						{
-							"_type": "UMLMessage",
-							"_id": "AAAAAAFm1+ukukLvCgE=",
-							"_parent": {
-								"$ref": "AAAAAAFm18r4CkIWk0s="
-							},
-							"name": "add document",
+							"name": "add/remove document",
 							"source": {
 								"$ref": "AAAAAAFm184aIUJd0TI="
 							},
@@ -897,7 +774,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFm18r4CkIWk0s="
 							},
-							"name": "Inform that Document is Added",
+							"name": "Inform that Document is Added/Removed",
 							"source": {
 								"$ref": "AAAAAAFm184aIUJd0TI="
 							},
