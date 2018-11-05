@@ -141,14 +141,14 @@
 											"left": 205,
 											"top": 80,
 											"width": 1,
-											"height": 671
+											"height": 641
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 144,
 									"top": 40,
 									"width": 122.5908203125,
-									"height": 711,
+									"height": 681,
 									"nameCompartment": {
 										"$ref": "AAAAAAFmsneOQOP1cco="
 									},
@@ -257,14 +257,14 @@
 											"left": 583,
 											"top": 80,
 											"width": 1,
-											"height": 671
+											"height": 641
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 472,
 									"top": 40,
 									"width": 222.99169921875,
-									"height": 711,
+									"height": 681,
 									"nameCompartment": {
 										"$ref": "AAAAAAFmsni96eQW9OE="
 									},
@@ -1301,7 +1301,7 @@
 												"$ref": "AAAAAAFmspc+KuVC9Fc="
 											},
 											"edgePosition": 1,
-											"text": "10 : Submit receipt"
+											"text": "10 : Take Recipt"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -1852,7 +1852,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFmsnbCxePQedw="
 							},
-							"name": "Submit receipt",
+							"name": "Take Recipt",
 							"source": {
 								"$ref": "AAAAAAFmsni96eQUEJg="
 							},

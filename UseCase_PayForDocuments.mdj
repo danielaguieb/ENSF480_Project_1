@@ -54,7 +54,7 @@
 														"$ref": "AAAAAAFmx8TCrofG4LU="
 													},
 													"font": "Arial;13;0",
-													"left": 133,
+													"left": 125,
 													"top": 45,
 													"width": 115.49169921875,
 													"height": 13,
@@ -67,7 +67,7 @@
 														"$ref": "AAAAAAFmx8TCrofG4LU="
 													},
 													"font": "Arial;13;1",
-													"left": 133,
+													"left": 125,
 													"top": 60,
 													"width": 115.49169921875,
 													"height": 13,
@@ -81,6 +81,7 @@
 													},
 													"visible": false,
 													"font": "Arial;13;0",
+													"left": -16,
 													"width": 106.20263671875,
 													"height": 13,
 													"text": "(from Interaction1)"
@@ -93,12 +94,13 @@
 													},
 													"visible": false,
 													"font": "Arial;13;0",
+													"left": -16,
 													"height": 13,
 													"horizontalAlignment": 1
 												}
 											],
 											"font": "Arial;13;0",
-											"left": 128,
+											"left": 120,
 											"top": 40,
 											"width": 125.49169921875,
 											"height": 40,
@@ -125,17 +127,17 @@
 												"$ref": "AAAAAAFmx8TCrofE75s="
 											},
 											"font": "Arial;13;0",
-											"left": 191,
+											"left": 183,
 											"top": 80,
 											"width": 1,
-											"height": 505
+											"height": 385
 										}
 									],
 									"font": "Arial;13;0",
-									"left": 128,
+									"left": 120,
 									"top": 40,
 									"width": 125.49169921875,
-									"height": 545,
+									"height": 425,
 									"nameCompartment": {
 										"$ref": "AAAAAAFmx8TCrofG4LU="
 									},
@@ -244,14 +246,14 @@
 											"left": 652,
 											"top": 80,
 											"width": 1,
-											"height": 489
+											"height": 385
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 616,
 									"top": 40,
 									"width": 72.736328125,
-									"height": 529,
+									"height": 425,
 									"nameCompartment": {
 										"$ref": "AAAAAAFmx8UJlofmPSQ="
 									},
@@ -266,11 +268,11 @@
 										"$ref": "AAAAAAFmx8Nm9IepfUI="
 									},
 									"font": "Arial;13;0",
-									"left": 352,
+									"left": 344,
 									"top": 16,
 									"width": 193,
 									"height": 64,
-									"text": "Pay For Books Use Case"
+									"text": "Pay For Documents Use Case"
 								},
 								{
 									"_type": "UMLSeqMessageView",
@@ -292,7 +294,7 @@
 												"$ref": "AAAAAAFmx8aERIgTfto="
 											},
 											"font": "Arial;13;0",
-											"left": 359,
+											"left": 355,
 											"top": 101,
 											"width": 119.005859375,
 											"height": 13,
@@ -302,7 +304,7 @@
 												"$ref": "AAAAAAFmx8aERIgU4fE="
 											},
 											"edgePosition": 1,
-											"text": "1 : Select Book"
+											"text": "1 : Select Document"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -315,7 +317,7 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 418,
+											"left": 414,
 											"top": 86,
 											"height": 13,
 											"alpha": 1.5707963267948966,
@@ -336,7 +338,7 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 418,
+											"left": 414,
 											"top": 121,
 											"height": 13,
 											"alpha": -1.5707963267948966,
@@ -369,7 +371,7 @@
 									"tail": {
 										"$ref": "AAAAAAFmx8TCr4fLle4="
 									},
-									"points": "191:117;645:117",
+									"points": "183:117;645:117",
 									"nameLabel": {
 										"$ref": "AAAAAAFmx8aERYgVIho="
 									},
@@ -403,9 +405,9 @@
 												"$ref": "AAAAAAFm3UxlwNLMbE4="
 											},
 											"font": "Arial;13;0",
-											"left": 372,
+											"left": 353,
 											"top": 192,
-											"width": 92.49169921875,
+											"width": 122.10986328125,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 10,
@@ -413,7 +415,7 @@
 												"$ref": "AAAAAAFm3UxlwNLNsiY="
 											},
 											"edgePosition": 1,
-											"text": "2 : Pay for Book"
+											"text": "2 : Pay for Document"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -426,7 +428,7 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 418,
+											"left": 414,
 											"top": 177,
 											"height": 13,
 											"alpha": 1.5707963267948966,
@@ -447,7 +449,7 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 418,
+											"left": 414,
 											"top": 212,
 											"height": 13,
 											"alpha": -1.5707963267948966,
@@ -480,7 +482,7 @@
 									"tail": {
 										"$ref": "AAAAAAFmx8TCr4fLle4="
 									},
-									"points": "191:208;645:208",
+									"points": "183:208;645:208",
 									"nameLabel": {
 										"$ref": "AAAAAAFm3UxlwNLOWF0="
 									},
@@ -736,7 +738,7 @@
 												"$ref": "AAAAAAFmx8oAMoif9BU="
 											},
 											"font": "Arial;13;0",
-											"left": 298,
+											"left": 294,
 											"top": 404,
 											"width": 245.4765625,
 											"height": 13,
@@ -759,7 +761,7 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 420,
+											"left": 416,
 											"top": 419,
 											"height": 13,
 											"alpha": 1.5707963267948966,
@@ -780,7 +782,7 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 421,
+											"left": 417,
 											"top": 384,
 											"height": 13,
 											"alpha": -1.5707963267948966,
@@ -801,7 +803,7 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 191,
+											"left": 183,
 											"top": 400,
 											"width": 14,
 											"height": 25
@@ -814,7 +816,7 @@
 									"tail": {
 										"$ref": "AAAAAAFmx8UJlofrb84="
 									},
-									"points": "652:400;191:400",
+									"points": "652:400;183:400",
 									"nameLabel": {
 										"$ref": "AAAAAAFmx8oAMoihPwo="
 									},
@@ -838,7 +840,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFmx8Nm9Ieow84="
 							},
-							"name": "Select Book",
+							"name": "Select Document",
 							"source": {
 								"$ref": "AAAAAAFmx8TCrofE75s="
 							},
@@ -852,7 +854,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFmx8Nm9Ieow84="
 							},
-							"name": "Pay for Book",
+							"name": "Pay for Document",
 							"source": {
 								"$ref": "AAAAAAFmx8TCrofE75s="
 							},
