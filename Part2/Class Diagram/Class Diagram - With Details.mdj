@@ -2022,8 +2022,8 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 288,
-											"top": 224,
+											"left": 320,
+											"top": 256,
 											"height": 13
 										},
 										{
@@ -2033,8 +2033,8 @@
 												"$ref": "AAAAAAFnBF0prxf8BQ8="
 											},
 											"font": "Arial;13;1",
-											"left": 1733,
-											"top": 503,
+											"left": 1749,
+											"top": 519,
 											"width": 243.8515625,
 											"height": 13,
 											"text": "OperatorInstance"
@@ -2047,8 +2047,8 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 288,
-											"top": 224,
+											"left": 320,
+											"top": 256,
 											"width": 73.67724609375,
 											"height": 13,
 											"text": "(from Model)"
@@ -2061,15 +2061,15 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 288,
-											"top": 224,
+											"left": 320,
+											"top": 256,
 											"height": 13,
 											"horizontalAlignment": 1
 										}
 									],
 									"font": "Arial;13;0",
-									"left": 1728,
-									"top": 496,
+									"left": 1744,
+									"top": 512,
 									"width": 253.8515625,
 									"height": 25,
 									"stereotypeLabel": {
@@ -2095,8 +2095,8 @@
 										"$ref": "AAAAAAFnBF0prhf5bWQ="
 									},
 									"font": "Arial;13;0",
-									"left": 1728,
-									"top": 521,
+									"left": 1744,
+									"top": 537,
 									"width": 253.8515625,
 									"height": 10
 								},
@@ -2120,8 +2120,8 @@
 												"$ref": "AAAAAAFnBF5KHxoyVD8="
 											},
 											"font": "Arial;13;0",
-											"left": 1733,
-											"top": 536,
+											"left": 1749,
+											"top": 552,
 											"width": 243.8515625,
 											"height": 13,
 											"text": "+addDocuments(doc: Document): void",
@@ -2137,8 +2137,8 @@
 												"$ref": "AAAAAAFnBGBqsx0mirA="
 											},
 											"font": "Arial;13;0",
-											"left": 1733,
-											"top": 551,
+											"left": 1749,
+											"top": 567,
 											"width": 243.8515625,
 											"height": 13,
 											"text": "+removeDocuments(doc: Document): void",
@@ -2154,8 +2154,8 @@
 												"$ref": "AAAAAAFnBGDWBh1587o="
 											},
 											"font": "Arial;13;0",
-											"left": 1733,
-											"top": 566,
+											"left": 1749,
+											"top": 582,
 											"width": 243.8515625,
 											"height": 13,
 											"text": "+updateDocuments(doc: Document): void",
@@ -2163,8 +2163,8 @@
 										}
 									],
 									"font": "Arial;13;0",
-									"left": 1728,
-									"top": 531,
+									"left": 1744,
+									"top": 547,
 									"width": 253.8515625,
 									"height": 53
 								},
@@ -2179,8 +2179,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 144,
-									"top": 112,
+									"left": 160,
+									"top": 128,
 									"width": 10,
 									"height": 10
 								},
@@ -2195,16 +2195,16 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 144,
-									"top": 112,
+									"left": 160,
+									"top": 128,
 									"width": 10,
 									"height": 10
 								}
 							],
 							"font": "Arial;13;0",
 							"containerChangeable": true,
-							"left": 1728,
-							"top": 496,
+							"left": 1744,
+							"top": 512,
 							"width": 253.8515625,
 							"height": 97,
 							"nameCompartment": {
@@ -2244,8 +2244,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1580,
-									"top": 416,
+									"left": 1588,
+									"top": 424,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -2265,8 +2265,8 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 1573,
-									"top": 429,
+									"left": 1581,
+									"top": 437,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -2286,8 +2286,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1593,
-									"top": 389,
+									"left": 1601,
+									"top": 397,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -2305,7 +2305,7 @@
 								"$ref": "AAAAAAFnBF0prxf7ZV0="
 							},
 							"lineStyle": 1,
-							"points": "1757:495;1417:323",
+							"points": "1776:511;1414:323",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFnBF4B7Bhu98M="
@@ -2400,7 +2400,7 @@
 								"$ref": "AAAAAAFnBF0prxf7ZV0="
 							},
 							"lineStyle": 1,
-							"points": "1832:495;1664:128;752:128;752:207",
+							"points": "1847:511;1664:128;752:128;752:207",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFnBGF3Lh5TA+M="
@@ -4432,7 +4432,7 @@
 								"$ref": "AAAAAAFnBF0prxf7ZV0="
 							},
 							"lineStyle": 1,
-							"points": "1854:495;1856:24;776:24;286:351",
+							"points": "1869:511;1856:24;776:24;286:351",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFnBJgikZj3c+o="
@@ -4443,6 +4443,19 @@
 							"propertyLabel": {
 								"$ref": "AAAAAAFnBJgikZj59/A="
 							}
+						},
+						{
+							"_type": "UMLNoteView",
+							"_id": "AAAAAAFnBKW8madscl8=",
+							"_parent": {
+								"$ref": "AAAAAAFF+qBtyKM79qY="
+							},
+							"font": "Arial;13;0",
+							"left": 1408,
+							"top": 456,
+							"width": 77.0908203125,
+							"height": 116,
+							"text": "Real life --is it like submiting a document through a printer"
 						}
 					]
 				},
