@@ -862,7 +862,7 @@
 												"$ref": "AAAAAAFnAD/BFBk0Jmo="
 											},
 											"edgePosition": 1,
-											"text": "4 : validate that Document is in Print Queue"
+											"text": "4 : confirm that Document is in Print Queue"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -995,7 +995,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFmsl+x2085Gb4="
 							},
-							"name": "validate that Document is in Print Queue",
+							"name": "confirm that Document is in Print Queue",
 							"source": {
 								"$ref": "AAAAAAFnACsxChhJQ8U="
 							},
