@@ -3314,7 +3314,7 @@
 											"width": 194.771484375,
 											"height": 13,
 											"underline": true,
-											"text": "+publish: Publish",
+											"text": "-publish: Publish",
 											"horizontalAlignment": 0
 										}
 									],
@@ -8709,6 +8709,7 @@
 								"$ref": "AAAAAAFnBV0MIQuJDtc="
 							},
 							"name": "publish",
+							"visibility": "private",
 							"isStatic": true,
 							"type": {
 								"$ref": "AAAAAAFnBV0MIQuJDtc="
