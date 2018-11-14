@@ -18721,7 +18721,7 @@
 											"top": 1343,
 											"width": 63.55908203125,
 											"height": 13,
-											"text": "Document"
+											"text": "Magazine"
 										},
 										{
 											"_type": "LabelView",
@@ -21920,7 +21920,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFnBUVuLN7KNkU="
 					},
-					"name": "Document",
+					"name": "Magazine",
 					"ownedElements": [
 						{
 							"_type": "UMLGeneralization",
