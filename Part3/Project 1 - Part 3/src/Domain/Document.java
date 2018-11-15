@@ -2,6 +2,7 @@ package Domain;
 
 public abstract class Document
 {
+	protected int docID;
 	protected String name;
 	protected String author;
 	protected String pubDate;
@@ -45,5 +46,13 @@ public abstract class Document
 
 	public void setPublisher(String publisher) {
 		this.publisher = publisher;
+	}
+
+	public int getDocID() {
+		return docID;
+	}
+
+	public void setDocID(int docID) {
+		this.docID = docID;
 	}
 }

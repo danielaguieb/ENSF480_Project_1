@@ -2,10 +2,7 @@ package Database;
 
 import Domain.Document;
 import Domain.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class DocumentDatabaseController extends Controller
 {
@@ -23,11 +20,11 @@ public class DocumentDatabaseController extends Controller
 	
 	public void addDocuments(Document origdoc)
 	{
-		String sql = "";
+		String sql = "INSERT INTO ";
 		
 		if (origdoc instanceof Book) {
 			Book doc = (Book) origdoc;
-			sql = "INSERT INTO " + bookTable + "(name, author, pubDate, publisher, genre, isFiction)" +
+			sql = bookTable + "(name, author, pubDate, publisher, genre, isFiction)" +
 				" VALUES ( " + doc.getName()+ ", '" + 
 				doc.getAuthor() + "', " + 
 				doc.getPubDate() + ", " + 
@@ -38,7 +35,7 @@ public class DocumentDatabaseController extends Controller
 		
 		else if (origdoc instanceof Magazine) {
 			Magazine doc = (Magazine) origdoc;
-			sql = "INSERT INTO " + magazineTable + "(name, author, pubDate, publisher, isOngoing)" +
+			sql = magazineTable + "(name, author, pubDate, publisher, isOngoing)" +
 				" VALUES ( " + doc.getName()+ ", '" + 
 				doc.getAuthor() + "', " + 
 				doc.getPubDate() + ", " + 
@@ -52,7 +49,7 @@ public class DocumentDatabaseController extends Controller
 			for (String co_author: doc.getCo_contributers())
 				co_contributers += co_author;
 			
-			sql = "INSERT INTO " + bookTable + "(name, author, pubDate, publisher, genre, contributers)" +
+			sql = journalTable + "(name, author, pubDate, publisher, genre, contributers)" +
 				" VALUES ( " + doc.getName()+ ", '" + 
 				doc.getAuthor() + "', " + 
 				doc.getPubDate() + ", " + 
@@ -68,12 +65,32 @@ public class DocumentDatabaseController extends Controller
 		}
 	}
 	
-	public void removeDocuments()
+	public void removeDocuments(Document origdoc)
 	{
+		String sql = "DELETE FROM ";
 		
+		if (origdoc instanceof Book) {
+			sql += bookTable;
+		}
+		
+		else if (origdoc instanceof Magazine) {
+			sql += magazineTable;
+		}
+		
+		else {
+			sql += journalTable;
+		}
+		
+		try {
+			sql += " WHERE docID = " + origdoc.getDocID();
+			statement = jdbc_connection.createStatement();
+			statement.executeUpdate(sql);
+		}catch (SQLException e) {
+			System.out.println("Error: Cant add documents to document database");
+		}
 	}
 	
-	public void updateDocuments()
+	public void updateDocuments(Document origdoc)
 	{
 		
 	}
