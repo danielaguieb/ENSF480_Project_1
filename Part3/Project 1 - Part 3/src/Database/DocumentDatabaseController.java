@@ -21,17 +21,19 @@ public class DocumentDatabaseController extends Controller
 		magazineTable = "magazine";
 	}
 	
-	public void addDocuments(Document doc)
+	public void addDocuments(Document origdoc)
 	{
-		String sql; 
+		String sql = "";
 		
-		if (doc instanceof Book) {
+		if (origdoc instanceof Book) {
+			Book doc = (Book) origdoc;
 			sql = "INSERT INTO " + bookTable + "(name, author, pubDate, publisher, genre, isFiction)" +
-				" VALUES ( " + doc.getName()() + ", '" + 
-				doc.getAuthor()() + "', " + 
-				doc.getPubDate()() + ", " + 
-				doc.getPublisher()() + ", " + 
-				((Book) doc).getGenre()() + ");";
+				" VALUES ( " + doc.getName()+ ", '" + 
+				doc.getAuthor() + "', " + 
+				doc.getPubDate() + ", " + 
+				doc.getPublisher() + ", " + 
+				doc.getGenre() + ", " + 
+				doc.isFiction() + ");";
 		}
 		
 		try {
