@@ -2,6 +2,7 @@ package Database;
 
 import Domain.Document;
 import Domain.Book;
+import Domain.Magazine;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -34,6 +35,26 @@ public class DocumentDatabaseController extends Controller
 				doc.getPublisher() + ", " + 
 				doc.getGenre() + ", " + 
 				doc.isFiction() + ");";
+		}
+		
+		else if (origdoc instanceof Magazine) {
+			Magazine doc = (Magazine) origdoc;
+			sql = "INSERT INTO " + bookTable + "(name, author, pubDate, publisher, genre, isFiction)" +
+				" VALUES ( " + doc.getName()+ ", '" + 
+				doc.getAuthor() + "', " + 
+				doc.getPubDate() + ", " + 
+				doc.getPublisher() + ", " + 
+				doc.isOngoing() + ");";
+		}
+		
+		else {
+			Journal doc = (Journal) origdoc;
+			sql = "INSERT INTO " + bookTable + "(name, author, pubDate, publisher, genre, isFiction)" +
+				" VALUES ( " + doc.getName()+ ", '" + 
+				doc.getAuthor() + "', " + 
+				doc.getPubDate() + ", " + 
+				doc.getPublisher() + ", " + 
+				doc.isOngoing() + ");";
 		}
 		
 		try {
