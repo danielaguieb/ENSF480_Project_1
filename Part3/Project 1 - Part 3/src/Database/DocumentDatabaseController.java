@@ -1,8 +1,7 @@
 package Database;
 
 import Domain.Document;
-import Domain.Book;
-import Domain.Magazine;
+import Domain.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -39,7 +38,7 @@ public class DocumentDatabaseController extends Controller
 		
 		else if (origdoc instanceof Magazine) {
 			Magazine doc = (Magazine) origdoc;
-			sql = "INSERT INTO " + bookTable + "(name, author, pubDate, publisher, genre, isFiction)" +
+			sql = "INSERT INTO " + magazineTable + "(name, author, pubDate, publisher, isOngoing)" +
 				" VALUES ( " + doc.getName()+ ", '" + 
 				doc.getAuthor() + "', " + 
 				doc.getPubDate() + ", " + 
@@ -49,12 +48,16 @@ public class DocumentDatabaseController extends Controller
 		
 		else {
 			Journal doc = (Journal) origdoc;
-			sql = "INSERT INTO " + bookTable + "(name, author, pubDate, publisher, genre, isFiction)" +
+			String co_contributers = "";
+			for (String co_author: doc.getCo_contributers())
+				co_contributers += co_author;
+			
+			sql = "INSERT INTO " + bookTable + "(name, author, pubDate, publisher, genre, contributers)" +
 				" VALUES ( " + doc.getName()+ ", '" + 
 				doc.getAuthor() + "', " + 
 				doc.getPubDate() + ", " + 
 				doc.getPublisher() + ", " + 
-				doc.isOngoing() + ");";
+				co_contributers + ");";
 		}
 		
 		try {
