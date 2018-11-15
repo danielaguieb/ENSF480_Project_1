@@ -1,14 +1,11 @@
 package Database;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import Domain.Document;
+import Domain.Book;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Scanner;
 
 public class DocumentDatabaseController extends Controller
 {
@@ -18,17 +15,40 @@ public class DocumentDatabaseController extends Controller
 	
 	public DocumentDatabaseController()
 	{
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			jdbc_connection = DriverManager.getConnection(connectionInfo, login, password);
-			databaseName = "documentdatabase";
-			bookTable = "book";
-			journalTable = "journal";
-			magazineTable = "magazine";
-		} catch (SQLException e) {
-			System.out.println("Error: document database cannot be connected to!");
-		} catch (ClassNotFoundException e) {
-			System.out.println("Error: the jdbc is not properly installed");
+		super();
+		bookTable = "book";
+		journalTable = "journal";
+		magazineTable = "magazine";
+	}
+	
+	public void addDocuments(Document doc)
+	{
+		String sql; 
+		
+		if (doc instanceof Book) {
+			sql = "INSERT INTO " + bookTable + "(name, author, pubDate, publisher, genre, isFiction)" +
+				" VALUES ( " + doc.getName()() + ", '" + 
+				doc.getAuthor()() + "', " + 
+				doc.getPubDate()() + ", " + 
+				doc.getPublisher()() + ", " + 
+				((Book) doc).getGenre()() + ");";
 		}
+		
+		try {
+			statement = jdbc_connection.createStatement();
+			statement.executeUpdate(sql);
+		}catch (SQLException e) {
+			System.out.println("Error: Cant add documents to document database");
+		}
+	}
+	
+	public void removeDocuments()
+	{
+		
+	}
+	
+	public void updateDocuments()
+	{
+		
 	}
 }
