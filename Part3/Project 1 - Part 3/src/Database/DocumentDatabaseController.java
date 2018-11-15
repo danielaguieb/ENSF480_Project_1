@@ -92,6 +92,51 @@ public class DocumentDatabaseController extends Controller
 	
 	public void updateDocuments(Document origdoc)
 	{
+		String sql = "UPDATE ";
 		
+		if (origdoc instanceof Book) {
+			Book doc = (Book) origdoc;
+			sql += bookTable + " SET name = " + doc.getName()
+					+ ", author = " + doc.getAuthor()
+					+ ", pubDate = " + doc.getPubDate()
+					+ ", publisher = " + doc.getPublisher()
+					+ ", genre = " + doc.getGenre()
+					+ ", isFiction = " + doc.isFiction()
+					+ " WHERE docID = " + doc.getDocID() 
+					+ ";";
+		}
+		
+		else if (origdoc instanceof Magazine) {
+			Magazine doc = (Magazine) origdoc;
+			sql += magazineTable + " SET name = " + doc.getName()
+			+ ", author = " + doc.getAuthor()
+			+ ", pubDate = " + doc.getPubDate()
+			+ ", publisher = " + doc.getPublisher()
+			+ ", isOngoing = " + doc.isOngoing()
+			+ " WHERE docID = " + doc.getDocID() 
+			+ ";";
+		}
+		
+		else {
+			Journal doc = (Journal) origdoc;
+			String co_contributers = "";
+			for (String co_author: doc.getCo_contributers())
+				co_contributers += co_author;
+			
+			sql += journalTable + " SET name = " + doc.getName()
+			+ ", author = " + doc.getAuthor()
+			+ ", pubDate = " + doc.getPubDate()
+			+ ", publisher = " + doc.getPublisher()
+			+ ", contributers = " + co_contributers
+			+ " WHERE docID = " + doc.getDocID() 
+			+ ";";
+		}
+		
+		try {
+			statement = jdbc_connection.createStatement();
+			statement.executeUpdate(sql);
+		}catch (SQLException e) {
+			System.out.println("Error: Cant add documents to document database");
+		}
 	}
 }
