@@ -1,7 +1,7 @@
 package Database;
 
 import Domain.Document;
-import Domain.Book;
+import Domain.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -21,17 +21,43 @@ public class DocumentDatabaseController extends Controller
 		magazineTable = "magazine";
 	}
 	
-	public void addDocuments(Document doc)
+	public void addDocuments(Document origdoc)
 	{
-		String sql; 
+		String sql = "";
 		
-		if (doc instanceof Book) {
+		if (origdoc instanceof Book) {
+			Book doc = (Book) origdoc;
 			sql = "INSERT INTO " + bookTable + "(name, author, pubDate, publisher, genre, isFiction)" +
-				" VALUES ( " + doc.getName()() + ", '" + 
-				doc.getAuthor()() + "', " + 
-				doc.getPubDate()() + ", " + 
-				doc.getPublisher()() + ", " + 
-				((Book) doc).getGenre()() + ");";
+				" VALUES ( " + doc.getName()+ ", '" + 
+				doc.getAuthor() + "', " + 
+				doc.getPubDate() + ", " + 
+				doc.getPublisher() + ", " + 
+				doc.getGenre() + ", " + 
+				doc.isFiction() + ");";
+		}
+		
+		else if (origdoc instanceof Magazine) {
+			Magazine doc = (Magazine) origdoc;
+			sql = "INSERT INTO " + magazineTable + "(name, author, pubDate, publisher, isOngoing)" +
+				" VALUES ( " + doc.getName()+ ", '" + 
+				doc.getAuthor() + "', " + 
+				doc.getPubDate() + ", " + 
+				doc.getPublisher() + ", " + 
+				doc.isOngoing() + ");";
+		}
+		
+		else {
+			Journal doc = (Journal) origdoc;
+			String co_contributers = "";
+			for (String co_author: doc.getCo_contributers())
+				co_contributers += co_author;
+			
+			sql = "INSERT INTO " + bookTable + "(name, author, pubDate, publisher, genre, contributers)" +
+				" VALUES ( " + doc.getName()+ ", '" + 
+				doc.getAuthor() + "', " + 
+				doc.getPubDate() + ", " + 
+				doc.getPublisher() + ", " + 
+				co_contributers + ");";
 		}
 		
 		try {
