@@ -1,6 +1,8 @@
 package Database;
 
 import Domain.*;
+import oracle.jvm.hotspot.jfr.ThreadGroupEntry;
+
 import java.sql.SQLException;
 
 public class DocumentDatabaseController extends Controller
@@ -138,4 +140,7 @@ public class DocumentDatabaseController extends Controller
 			System.out.println("Error: Cant add documents to document database");
 		}
 	}
+	
+	//gotta add some more functions, mostly the search one. the last two might not even be needed to implemented here;
+	//they probably just need the search function as well
 }
