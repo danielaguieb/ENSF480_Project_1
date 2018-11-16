@@ -22,7 +22,7 @@ public class UserDatabaseController extends Controller
 		String sql = "SELECT * FROM " + buyerTable + " WHERE userID = " + buyer.getUserID() + ";";
 		ResultSet result;
 		try {
-			statement = jdbc_connection.createStatement();
+			statement = jdbc_connection.prepareStatement(sql);
 			result = statement.executeQuery(sql);
 			if(result.next()){
 				Double previous_payment = result.getDouble("outstanding_payments");
@@ -31,7 +31,7 @@ public class UserDatabaseController extends Controller
 				sql = "UPDATE " + buyerTable + 
 						" SET outstanding_payments = " + new_payment +
 						" WHERE userID = " + buyer.getUserID() + ";";
-				statement = jdbc_connection.createStatement();
+				statement = jdbc_connection.prepareStatement(sql);
 				statement.executeUpdate(sql);
 			}
 			else {
@@ -49,7 +49,7 @@ public class UserDatabaseController extends Controller
 				" WHERE userID = " + ordinaryBuyer.getUserID()
 				+ ";";
 		try {
-			statement = jdbc_connection.createStatement();
+			statement = jdbc_connection.prepareStatement(sql);
 			statement.executeUpdate(sql);
 		}catch (SQLException e) {
 			System.out.println("Error: Cant add documents to document database");
@@ -64,7 +64,7 @@ public class UserDatabaseController extends Controller
 				" WHERE userID = " + regBuyer.getUserID()
 				+ ";";
 		try {
-			statement = jdbc_connection.createStatement();
+			statement = jdbc_connection.prepareStatement(sql);
 			statement.executeUpdate(sql);
 		}catch (SQLException e) {
 			System.out.println("Error: Cant add documents to document database");

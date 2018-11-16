@@ -7,13 +7,21 @@ public abstract class Document
 	protected String author;
 	protected String pubDate;
 	protected String publisher;
+	protected int isPromotion;
 	
-	public Document(String name, String author, String pubDate, String publisher)
+	public Document(String name, String author, String pubDate, String publisher, int isPromotion)
 	{
 		this.name = name;
 		this.author = author;
 		this.pubDate = pubDate;
 		this.publisher = publisher;
+		this.isPromotion = isPromotion;
+	}
+	
+	public Document(int docID, String name, String author, String pubDate, String publisher, int isPromotion)
+	{
+		this(name, author, pubDate, publisher, isPromotion);
+		this.docID = docID;
 	}
 
 	public String getName() {
@@ -54,5 +62,13 @@ public abstract class Document
 
 	public void setDocID(int docID) {
 		this.docID = docID;
+	}
+
+	public int getIsPromotion() {
+		return isPromotion;
+	}
+
+	public void setIsPromotion(int isPromotion) {
+		this.isPromotion = isPromotion;
 	}
 }

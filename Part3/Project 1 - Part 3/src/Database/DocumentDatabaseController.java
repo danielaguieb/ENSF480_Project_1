@@ -25,44 +25,69 @@ public class DocumentDatabaseController extends Controller
 		
 		if (origdoc instanceof Book) {
 			Book doc = (Book) origdoc;
-			sql = bookTable + "(name, author, pubDate, publisher, genre, isFiction)" +
-				" VALUES ( " + doc.getName()+ ", '" + 
-				doc.getAuthor() + "', " + 
-				doc.getPubDate() + ", " + 
-				doc.getPublisher() + ", " + 
-				doc.getGenre() + ", " + 
-				doc.isFiction() + ");";
+			sql += bookTable + " (name, author, pubDate, publisher, isPromotion, genre, isFiction)" +
+				" VALUES(?, ?, ?, ?, ?, ?, ?)";
+					
+			try {
+				statement = jdbc_connection.prepareStatement(sql);
+				statement.setString(1, doc.getName());
+				statement.setString(2, doc.getAuthor());
+				statement.setString(3, doc.getPubDate());
+				statement.setString(4, doc.getPublisher());	
+				statement.setInt(5, doc.getIsPromotion());
+				statement.setString(6, doc.getGenre());	
+				statement.setInt(7, doc.isFiction());
+				statement.executeUpdate();
+				System.out.println("book now sucessfully added in");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		else if (origdoc instanceof Magazine) {
 			Magazine doc = (Magazine) origdoc;
-			sql = magazineTable + "(name, author, pubDate, publisher, isOngoing)" +
-				" VALUES ( " + doc.getName()+ ", '" + 
-				doc.getAuthor() + "', " + 
-				doc.getPubDate() + ", " + 
-				doc.getPublisher() + ", " + 
-				doc.isOngoing() + ");";
+			System.out.println("doc is a magainze");
+			sql += magazineTable + " (name, author, pubDate, publisher, isPromotion, isOngoing)" +
+					" VALUES(?, ?, ?, ?, ?, ?)";
+						
+				try {
+					statement = jdbc_connection.prepareStatement(sql);
+					statement.setString(1, doc.getName());
+					statement.setString(2, doc.getAuthor());
+					statement.setString(3, doc.getPubDate());
+					statement.setString(4, doc.getPublisher());	
+					statement.setInt(5, doc.getIsPromotion());
+					statement.setInt(6, doc.isOngoing());	
+					statement.executeUpdate();
+					System.out.println("magazine now successfully added in");
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 		}
 		
 		else {
 			Journal doc = (Journal) origdoc;
+			System.out.println("doc is a journal");
 			String co_contributers = "";
 			for (String co_author: doc.getCo_contributers())
 				co_contributers += co_author;
 			
-			sql = journalTable + "(name, author, pubDate, publisher, genre, contributers)" +
-				" VALUES ( " + doc.getName()+ ", '" + 
-				doc.getAuthor() + "', " + 
-				doc.getPubDate() + ", " + 
-				doc.getPublisher() + ", " + 
-				co_contributers + ");";
-		}
-		
-		try {
-			statement = jdbc_connection.createStatement();
-			statement.executeUpdate(sql);
-		}catch (SQLException e) {
-			System.out.println("Error: Cant add documents to document database");
+			sql += journalTable + " (name, author, pubDate, publisher, isPromotion, contributers)" +
+					" VALUES(?, ?, ?, ?, ?, ?)";
+						
+				try {
+					statement = jdbc_connection.prepareStatement(sql);
+					statement.setString(1, doc.getName());
+					statement.setString(2, doc.getAuthor());
+					statement.setString(3, doc.getPubDate());
+					statement.setString(4, doc.getPublisher());	
+					statement.setInt(5, doc.getIsPromotion());
+					statement.setString(6, co_contributers);	
+					statement.executeUpdate();
+					System.out.println("journal now successfully added in");
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 		}
 	}
 	
@@ -83,11 +108,13 @@ public class DocumentDatabaseController extends Controller
 		}
 		
 		try {
-			sql += " WHERE docID = " + origdoc.getDocID();
-			statement = jdbc_connection.createStatement();
-			statement.executeUpdate(sql);
+			sql += " WHERE docID = ?";
+			statement = jdbc_connection.prepareStatement(sql);
+			statement.setInt(1, origdoc.getDocID());
+			statement.executeUpdate();
+			System.out.println("Document Successfully removed" + origdoc.getDocID());
 		}catch (SQLException e) {
-			System.out.println("Error: Cant add documents to document database");
+			System.out.println("Error: Cant remove documents from document database");
 		}
 	}
 	
@@ -102,6 +129,7 @@ public class DocumentDatabaseController extends Controller
 					+ ", pubDate = " + doc.getPubDate()
 					+ ", publisher = " + doc.getPublisher()
 					+ ", genre = " + doc.getGenre()
+					+ ", isPromotion = " + doc.getIsPromotion()
 					+ ", isFiction = " + doc.isFiction()
 					+ " WHERE docID = " + doc.getDocID() 
 					+ ";";
@@ -134,22 +162,19 @@ public class DocumentDatabaseController extends Controller
 		}
 		
 		try {
-			statement = jdbc_connection.createStatement();
+			statement = jdbc_connection.prepareStatement(sql);
 			statement.executeUpdate(sql);
 		}catch (SQLException e) {
 			System.out.println("Error: Cant add documents to document database");
 		}
 	}
 	
-	public String search(String docName)
+	public String search(String docName, String docTable)
 	{
-		// the search maybe could use roundbuttons to see what type of doc im searching for but it does say book 
-		// so for now just worry about books. also then we can make place an order and payments deal with books only? 
-		// we can say we interpreted it as that
-		String sql = "SELECT * FROM " + bookTable + " WHERE name = " + docName;
+		String sql = "SELECT * FROM " + docTable + " WHERE name = " + docName;
 		ResultSet result;
 		try {
-			statement = jdbc_connection.createStatement();
+			statement = jdbc_connection.prepareStatement(sql);
 			result = statement.executeQuery(sql);
 			if(result.next()){
 				String toreturn = result.getString("name") + ";" + 
@@ -161,13 +186,19 @@ public class DocumentDatabaseController extends Controller
 				System.out.println("Error: Book not found");
 			}
 		
-		} catch (SQLException e) { e.printStackTrace(); }
+		} catch (SQLException e) { System.out.println("Error: Document's cannot be searched for");}
 		
 		return null;
 	}
 	
-	//gotta add some more functions, mostly the search one. the last two might not even be needed to implemented here;
-	//they probably just need the search function as well
-	//the promotion list might need its own table. havn't made a table yet thought. wonder if how there's different types 
-	//of documents might become a problem
+	public static void main(String[] args)
+	{
+		DocumentDatabaseController databaseController = new DocumentDatabaseController();
+		Book book = new Book("Trial Book", "Huz", "November 16, 2018", "Backend development", 0, "Jokes", 1);
+		//databaseController.addDocuments(book);
+		//Magazine magazine = new Magazine("My First Magazine", "Daniel Guieb", "October 1, 1965", "Daniel's Mom", 1, 1);
+		//databaseController.addDocuments(magazine);
+		databaseController.removeDocuments(book);
+	}
+	
 }

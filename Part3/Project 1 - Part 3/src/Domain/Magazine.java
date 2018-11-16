@@ -2,19 +2,19 @@ package Domain;
 
 public class Magazine extends Document
 {
-	private boolean isOngoing;
+	private int isOngoing;
 	
-	public Magazine(String name, String author, String pubDate, String publisher, boolean isOngoing)
+	public Magazine(String name, String author, String pubDate, String publisher, int isPromotion, int isOngoing)
 	{
-		super(name, author, pubDate, publisher);
+		super(name, author, pubDate, publisher, isPromotion);
 		this.isOngoing = isOngoing;
 	}
 
-	public boolean isOngoing() {
+	public int isOngoing() {
 		return isOngoing;
 	}
 
-	public void setOngoing(boolean isOngoing) {
+	public void setOngoing(int isOngoing) {
 		this.isOngoing = isOngoing;
 	}
 

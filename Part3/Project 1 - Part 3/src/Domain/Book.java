@@ -3,11 +3,11 @@ package Domain;
 public class Book extends Document
 {
 	private String genre;
-	private boolean isFiction;
+	private int isFiction;
 	
-	public Book(String name, String author, String pubDate, String publisher, String genre, boolean isFiction)
+	public Book(String name, String author, String pubDate, String publisher, int isPromotion, String genre, int isFiction)
 	{
-		super(name, author, pubDate, publisher);
+		super(name, author, pubDate, publisher, isPromotion);
 		this.genre = genre;
 		this.isFiction = isFiction;
 	}
@@ -20,11 +20,11 @@ public class Book extends Document
 		this.genre = genre;
 	}
 
-	public boolean isFiction() {
+	public int isFiction() {
 		return isFiction;
 	}
 
-	public void setFiction(boolean isFiction) {
+	public void setFiction(int isFiction) {
 		this.isFiction = isFiction;
 	}
 }
