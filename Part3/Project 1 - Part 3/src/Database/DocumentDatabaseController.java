@@ -112,7 +112,7 @@ public class DocumentDatabaseController extends Controller
 			statement = jdbc_connection.prepareStatement(sql);
 			statement.setInt(1, origdoc.getDocID());
 			statement.executeUpdate();
-			System.out.println("Document Successfully removed" + origdoc.getDocID());
+			System.out.println("Document Successfully removed");
 		}catch (SQLException e) {
 			System.out.println("Error: Cant remove documents from document database");
 		}
@@ -124,26 +124,44 @@ public class DocumentDatabaseController extends Controller
 		
 		if (origdoc instanceof Book) {
 			Book doc = (Book) origdoc;
-			sql += bookTable + " SET name = " + doc.getName()
-					+ ", author = " + doc.getAuthor()
-					+ ", pubDate = " + doc.getPubDate()
-					+ ", publisher = " + doc.getPublisher()
-					+ ", genre = " + doc.getGenre()
-					+ ", isPromotion = " + doc.getIsPromotion()
-					+ ", isFiction = " + doc.isFiction()
-					+ " WHERE docID = " + doc.getDocID() 
-					+ ";";
+			sql += bookTable + " SET name = ?, author = ?, pubDate = ?, publisher = ?, isPromotion = ?, genre = ?, isFiction = ?"
+					+ " WHERE docID = ?";
+			try {
+				statement = jdbc_connection.prepareStatement(sql);
+				statement.setString(1, doc.getName());
+				statement.setString(2, doc.getAuthor());
+				statement.setString(3, doc.getPubDate());
+				statement.setString(4, doc.getPublisher());
+				statement.setInt(5, doc.getIsPromotion());
+				statement.setString(6, doc.getGenre());
+				statement.setInt(7, doc.isFiction());
+				statement.setInt(8, doc.getDocID());
+				statement.executeUpdate();
+				System.out.println("Book has been updated");
+			} catch (SQLException e) {
+				System.out.println("Error: book cannot be updated");
+				e.printStackTrace();
+			}
 		}
 		
 		else if (origdoc instanceof Magazine) {
 			Magazine doc = (Magazine) origdoc;
-			sql += magazineTable + " SET name = " + doc.getName()
-			+ ", author = " + doc.getAuthor()
-			+ ", pubDate = " + doc.getPubDate()
-			+ ", publisher = " + doc.getPublisher()
-			+ ", isOngoing = " + doc.isOngoing()
-			+ " WHERE docID = " + doc.getDocID() 
-			+ ";";
+			sql += magazineTable + " SET name = ?, author = ?, pubDate = ?, publisher = ?, isPromotion = ?, isOngoing = ?"
+					+ " WHERE docID = ?";
+			try {
+				statement = jdbc_connection.prepareStatement(sql);
+				statement.setString(1, doc.getName());
+				statement.setString(2, doc.getAuthor());
+				statement.setString(3, doc.getPubDate());
+				statement.setString(4, doc.getPublisher());
+				statement.setInt(5, doc.getIsPromotion());
+				statement.setInt(6, doc.isOngoing());
+				statement.setInt(7, doc.getDocID());
+				statement.executeUpdate();
+				System.out.println("Magazine has been updated");
+			} catch (SQLException e) {
+				System.out.println("Error: magazine cannot be updated");
+			}
 		}
 		
 		else {
@@ -152,30 +170,33 @@ public class DocumentDatabaseController extends Controller
 			for (String co_author: doc.getCo_contributers())
 				co_contributers += co_author;
 			
-			sql += journalTable + " SET name = " + doc.getName()
-			+ ", author = " + doc.getAuthor()
-			+ ", pubDate = " + doc.getPubDate()
-			+ ", publisher = " + doc.getPublisher()
-			+ ", contributers = " + co_contributers
-			+ " WHERE docID = " + doc.getDocID() 
-			+ ";";
-		}
-		
-		try {
-			statement = jdbc_connection.prepareStatement(sql);
-			statement.executeUpdate(sql);
-		}catch (SQLException e) {
-			System.out.println("Error: Cant add documents to document database");
+			sql += magazineTable + " SET name = ?, author = ?, pubDate = ?, publisher = ?, isPromotion = ?, contributers = ?"
+					+ " WHERE docID = ?";
+			try {
+				statement = jdbc_connection.prepareStatement(sql);
+				statement.setString(1, doc.getName());
+				statement.setString(2, doc.getAuthor());
+				statement.setString(3, doc.getPubDate());
+				statement.setString(4, doc.getPublisher());
+				statement.setInt(5, doc.getIsPromotion());
+				statement.setString(6, co_contributers);
+				statement.setInt(7, doc.getDocID());
+				statement.executeUpdate();
+				System.out.println("Journal has been updated");
+			} catch (SQLException e) {
+				System.out.println("Error: journal cannot be updated");
+			}
 		}
 	}
 	
 	public String search(String docName, String docTable)
 	{
-		String sql = "SELECT * FROM " + docTable + " WHERE name = " + docName;
+		String sql = "SELECT * FROM " + docTable + " WHERE name = ?";
 		ResultSet result;
 		try {
 			statement = jdbc_connection.prepareStatement(sql);
-			result = statement.executeQuery(sql);
+			statement.setString(1, docName);
+			result = statement.executeQuery();
 			if(result.next()){
 				String toreturn = result.getString("name") + ";" + 
 								  result.getString("author") + ";" +
@@ -198,8 +219,12 @@ public class DocumentDatabaseController extends Controller
 		//databaseController.addDocuments(book);
 		//Magazine magazine = new Magazine("My First Magazine", "Daniel Guieb", "October 1, 1965", "Daniel's Mom", 1, 1);
 		//databaseController.addDocuments(magazine);
-		Book book = new Book(3, null, null, null, null, null, null, null);
-		databaseController.removeDocuments(book);
+		//Book book = new Book(3, null, null, null, null, 0, null, 0);
+		//databaseController.removeDocuments(book);
+		//Book book = new Book(2, "Journey to the Centre of the Earth", "Jules Verne", "March 18, 1844", "Penguin House", 0, "science fantasy", 1);
+		//databaseController.updateDocuments(book);
+		System.out.println(databaseController.search("Journey to the Centre of the Earth", "book"));
+		
 	}
 	
 }
