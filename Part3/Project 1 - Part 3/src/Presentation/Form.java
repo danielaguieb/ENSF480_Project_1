@@ -1,4 +1,6 @@
 package Presentation;
+import javax.swing.JFrame;
+
 import Database.*;
 
 /*
@@ -7,7 +9,7 @@ import Database.*;
  */
 
 
-public abstract class Form {
+public abstract class Form extends JFrame{
 
 	private String name;
 	private int ID;

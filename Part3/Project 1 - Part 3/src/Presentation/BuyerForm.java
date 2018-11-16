@@ -1,8 +1,14 @@
 package Presentation;
 
+import java.awt.Container;
+
 import Database.*;
 
 public class BuyerForm extends Form {
+	
+	private Container container;
+	
+	
 	
 	public BuyerForm(String n, int i, Controller c) {
 		super(n,i,c);
@@ -10,7 +16,7 @@ public class BuyerForm extends Form {
 
 	// TODO searches for document in database
 	public void search() {
-		// send in the document name to find in the database?
+		
 	}
 	
 	// TODO order a document that exists
@@ -37,6 +43,7 @@ public class BuyerForm extends Form {
 	public void accessPromotionList() {
 		
 	}
+	
 	
 }
 
