@@ -9,6 +9,12 @@ public class Magazine extends Document
 		super(name, author, pubDate, publisher, isPromotion);
 		this.isOngoing = isOngoing;
 	}
+	
+	public Magazine(int docID, String name, String author, String pubDate, String publisher, int isPromotion, int isOngoing)
+	{
+		super(docID, name, author, pubDate, publisher, isPromotion);
+		this.isOngoing = isOngoing;
+	}
 
 	public int isOngoing() {
 		return isOngoing;

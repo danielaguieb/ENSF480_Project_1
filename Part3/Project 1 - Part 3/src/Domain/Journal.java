@@ -11,6 +11,12 @@ public class Journal extends Document
 		super(name, author, pubDate, publisher, isPromotion);
 		this.co_contributers = co_contributers;
 	}
+	
+	public Journal(int docID, String name, String author, String pubDate, String publisher, int isPromotion, ArrayList<String> co_contributers)
+	{
+		super(docID, name, author, pubDate, publisher, isPromotion);
+		this.co_contributers = co_contributers;
+	}
 
 	public ArrayList<String> getCo_contributers() {
 		return co_contributers;

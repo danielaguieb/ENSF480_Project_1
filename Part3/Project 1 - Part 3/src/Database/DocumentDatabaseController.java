@@ -194,10 +194,11 @@ public class DocumentDatabaseController extends Controller
 	public static void main(String[] args)
 	{
 		DocumentDatabaseController databaseController = new DocumentDatabaseController();
-		Book book = new Book("Trial Book", "Huz", "November 16, 2018", "Backend development", 0, "Jokes", 1);
+		//Book book = new Book("Trial Book", "Huz", "November 16, 2018", "Backend development", 0, "Jokes", 1);
 		//databaseController.addDocuments(book);
 		//Magazine magazine = new Magazine("My First Magazine", "Daniel Guieb", "October 1, 1965", "Daniel's Mom", 1, 1);
 		//databaseController.addDocuments(magazine);
+		Book book = new Book(3, null, null, null, null, null, null, null);
 		databaseController.removeDocuments(book);
 	}
 	
