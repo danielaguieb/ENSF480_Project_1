@@ -1,6 +1,5 @@
 package Database;
 
-import Domain.Document;
 import Domain.*;
 import java.sql.SQLException;
 
@@ -12,7 +11,7 @@ public class DocumentDatabaseController extends Controller
 	
 	public DocumentDatabaseController()
 	{
-		super();
+		super("documentdatabase");
 		bookTable = "book";
 		journalTable = "journal";
 		magazineTable = "magazine";

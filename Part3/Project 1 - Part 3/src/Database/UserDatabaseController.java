@@ -9,10 +9,8 @@ public class UserDatabaseController extends Controller
 	
 	public UserDatabaseController()
 	{
-		super();
-		bookTable = "book";
-		journalTable = "journal";
-		magazineTable = "magazine";
+		super("userdatabase");
+		userTable = "user";
 	}
 	
 	

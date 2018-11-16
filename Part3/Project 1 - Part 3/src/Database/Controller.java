@@ -14,12 +14,12 @@ public abstract class Controller
 			  				login          = "root",
 			  				password       = "password";
 	
-	public Controller()
+	public Controller(String databaseName)
 	{
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			jdbc_connection = DriverManager.getConnection(connectionInfo, login, password);
-			databaseName = "documentdatabase";
+			this.databaseName = databaseName;
 		} catch (SQLException e) {
 			System.out.println("Error: document database cannot be connected to!");
 		} catch (ClassNotFoundException e) {
