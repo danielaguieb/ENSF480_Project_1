@@ -13,19 +13,9 @@ public class UserDatabaseController extends Controller
 		userTable = "user";
 	}
 	
-	public String register(User origuser)
+	public String register(OrdinaryBuyer ordinaryBuyerbuyer)
 	{
-		if (origuser instanceof OrdinaryBuyer) {
-			OrdinaryBuyer user = (OrdinaryBuyer) origuser;
-			sql += bookTable + " SET name = " + doc.getName()
-					+ ", author = " + doc.getAuthor()
-					+ ", pubDate = " + doc.getPubDate()
-					+ ", publisher = " + doc.getPublisher()
-					+ ", genre = " + doc.getGenre()
-					+ ", isFiction = " + doc.isFiction()
-					+ " WHERE docID = " + doc.getDocID() 
-					+ ";";
-		}
+		
 		
 		return null;
 	}
