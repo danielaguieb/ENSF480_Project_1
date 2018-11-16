@@ -15,29 +15,33 @@ public class UserDatabaseController extends Controller
 		operatorTable = "operator";
 	}
 	
-	public String register(OrdinaryBuyer ordinaryBuyer)
+	public void register(OrdinaryBuyer ordinaryBuyer)
 	{
-		String sql = "SELECT * FROM " + buyerTable + " WHERE userID = " + ordinaryBuyer.;
-		
-		return null;
+		String sql = "UPDATE " + buyerTable + 
+				" SET registered = 1" +
+				" WHERE userID = " + ordinaryBuyer.getUserID()
+				+ ";";
+		try {
+			statement = jdbc_connection.createStatement();
+			statement.executeUpdate(sql);
+		}catch (SQLException e) {
+			System.out.println("Error: Cant add documents to document database");
+		}
 	}
 	
-//	String sql = "SELECT * FROM " + tableName + " WHERE ID=" + toolID;
-//	ResultSet tool;
-//	try {
-//		statement = jdbc_connection.createStatement();
-//		tool = statement.executeQuery(sql);
-//		if(tool.next())
-//		{
-//			return new Tool(tool.getInt("ID"),
-//							tool.getString("TOOLNAME"), 
-//							tool.getInt("QUANTITY"), 
-//							tool.getDouble("PRICE"), 
-//							tool.getInt("SUPPLIERID"));
-//		}
-//	
-//	} catch (SQLException e) { e.printStackTrace(); }
-//	
-//	return null;
+
+	public void unregister(RegisteredBuyer regBuyer)
+	{
+		String sql = "UPDATE " + buyerTable + 
+				" SET registered = 0" +
+				" WHERE userID = " + regBuyer.getUserID()
+				+ ";";
+		try {
+			statement = jdbc_connection.createStatement();
+			statement.executeUpdate(sql);
+		}catch (SQLException e) {
+			System.out.println("Error: Cant add documents to document database");
+		}
+	}
 	
 }

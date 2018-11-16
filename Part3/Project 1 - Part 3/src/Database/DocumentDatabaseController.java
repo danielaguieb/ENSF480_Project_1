@@ -1,8 +1,6 @@
 package Database;
 
 import Domain.*;
-import oracle.jvm.hotspot.jfr.ThreadGroupEntry;
-
 import java.sql.SQLException;
 
 public class DocumentDatabaseController extends Controller
