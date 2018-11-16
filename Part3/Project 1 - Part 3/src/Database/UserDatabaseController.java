@@ -19,20 +19,23 @@ public class UserDatabaseController extends Controller
 	
 	public void makePayments(OrdinaryBuyer buyer, Double payment)
 	{
-		String sql = "SELECT * FROM " + buyerTable + " WHERE userID = " + buyer.getUserID() + ";";
+		String sql = "SELECT * FROM " + buyerTable + " WHERE userID = ?";
 		ResultSet result;
 		try {
 			statement = jdbc_connection.prepareStatement(sql);
-			result = statement.executeQuery(sql);
+			statement.setInt(1, buyer.getUserID());
+			result = statement.executeQuery();
 			if(result.next()){
 				Double previous_payment = result.getDouble("outstanding_payments");
 				Double new_payment = previous_payment - payment;
 				if (new_payment < 0.0) new_payment = 0.0;
 				sql = "UPDATE " + buyerTable + 
-						" SET outstanding_payments = " + new_payment +
-						" WHERE userID = " + buyer.getUserID() + ";";
+						" SET outstanding_payments = ?" +
+						" WHERE userID = ?";
 				statement = jdbc_connection.prepareStatement(sql);
-				statement.executeUpdate(sql);
+				statement.setDouble(1, new_payment);
+				statement.setInt(2, buyer.getUserID());
+				statement.executeUpdate();
 			}
 			else {
 				System.out.println("Error: Book not found");
@@ -45,12 +48,12 @@ public class UserDatabaseController extends Controller
 	public void register(OrdinaryBuyer ordinaryBuyer)
 	{
 		String sql = "UPDATE " + buyerTable + 
-				" SET registered = 1" +
-				" WHERE userID = " + ordinaryBuyer.getUserID()
-				+ ";";
+				" SET registered = ? WHERE userID = ?";
 		try {
 			statement = jdbc_connection.prepareStatement(sql);
-			statement.executeUpdate(sql);
+			statement.setInt(1, 1);
+			statement.setInt(2, ordinaryBuyer.getUserID());
+			statement.executeUpdate();
 		}catch (SQLException e) {
 			System.out.println("Error: Cant add documents to document database");
 		}
@@ -60,12 +63,12 @@ public class UserDatabaseController extends Controller
 	public void unregister(RegisteredBuyer regBuyer)
 	{
 		String sql = "UPDATE " + buyerTable + 
-				" SET registered = 0" +
-				" WHERE userID = " + regBuyer.getUserID()
-				+ ";";
+				" SET registered = ? WHERE userID = ?" ;
 		try {
 			statement = jdbc_connection.prepareStatement(sql);
-			statement.executeUpdate(sql);
+			statement.setInt(1, 0);
+			statement.setInt(2, regBuyer.getUserID());
+			statement.executeUpdate();
 		}catch (SQLException e) {
 			System.out.println("Error: Cant add documents to document database");
 		}
