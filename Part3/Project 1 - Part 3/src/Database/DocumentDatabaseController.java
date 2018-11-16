@@ -1,6 +1,8 @@
 package Database;
 
 import Domain.*;
+
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DocumentDatabaseController extends Controller
@@ -139,6 +141,33 @@ public class DocumentDatabaseController extends Controller
 		}
 	}
 	
+	public String search(String docName)
+	{
+		// the search maybe could use roundbuttons to see what type of doc im searching for but it does say book 
+		// so for now just worry about books. also then we can make place an order and payments deal with books only? 
+		// we can say we interpreted it as that
+		String sql = "SELECT * FROM " + bookTable + " WHERE name = " + docName;
+		ResultSet result;
+		try {
+			statement = jdbc_connection.createStatement();
+			result = statement.executeQuery(sql);
+			if(result.next()){
+				String toreturn = result.getString("name") + ";" + 
+								  result.getString("author") + ";" +
+								  result.getString("genre");
+				return toreturn;
+			}
+			else {
+				System.out.println("Error: Book not found");
+			}
+		
+		} catch (SQLException e) { e.printStackTrace(); }
+		
+		return null;
+	}
+	
 	//gotta add some more functions, mostly the search one. the last two might not even be needed to implemented here;
 	//they probably just need the search function as well
+	//the promotion list might need its own table. havn't made a table yet thought. wonder if how there's different types 
+	//of documents might become a problem
 }
