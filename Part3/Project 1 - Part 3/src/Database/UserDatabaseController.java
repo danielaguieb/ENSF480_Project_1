@@ -5,17 +5,19 @@ import java.sql.SQLException;
 
 public class UserDatabaseController extends Controller
 {
-	private String userTable;
+	private String buyerTable;
+	private String operatorTable;
 	
 	public UserDatabaseController()
 	{
 		super("userdatabase");
-		userTable = "user";
+		buyerTable = "buyer";
+		operatorTable = "operator";
 	}
 	
-	public String register(OrdinaryBuyer ordinaryBuyerbuyer)
+	public String register(OrdinaryBuyer ordinaryBuyer)
 	{
-		
+		String sql = "SELECT * FROM " + buyerTable + " WHERE userID = " + ordinaryBuyer.;
 		
 		return null;
 	}
