@@ -15,7 +15,7 @@ public abstract class Form {
 	
 	public Form() {
 		name = null;
-		ID = null;
+		ID = 0;
 		controller = null;
 	}
 	

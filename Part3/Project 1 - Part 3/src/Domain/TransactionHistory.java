@@ -18,11 +18,11 @@ public class TransactionHistory {
 	
 	public int totalSumPayments() {
 		int sum = 0;
-//		receiptList.forEach((r) -> sum += r.getPrice());
-		
-//		 TODO does this work?
-		for(Iterator<Receipt> it = receiptList.iterator(); it.hasNext();) {
-			sum += it.next().getPrice();
+//		for(Iterator<Receipt> it = receiptList.iterator(); it.hasNext();) {
+//			sum += it.next().getPrice();
+//		}
+		for(Receipt receipt : receiptList) {
+			sum += receipt.getPrice();
 		}
 		return sum;
 	}
