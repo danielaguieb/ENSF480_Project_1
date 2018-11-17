@@ -4,12 +4,14 @@ import Domain.*;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class DocumentDatabaseController extends Controller
 {
 	private String bookTable;
 	private String journalTable;
 	private String magazineTable;
+	private PromotionList promotionList;
 	
 	public DocumentDatabaseController()
 	{
@@ -17,6 +19,7 @@ public class DocumentDatabaseController extends Controller
 		bookTable = "book";
 		journalTable = "journal";
 		magazineTable = "magazine";
+		promotionList = PromotionList.getInstance();
 	}
 	
 	public void addDocuments(Document origdoc)
@@ -89,6 +92,9 @@ public class DocumentDatabaseController extends Controller
 					e.printStackTrace();
 				}
 		}
+		
+		if (origdoc.getIsPromotion() == 1) 
+			promotionList.addDocument(origdoc);
 	}
 	
 	public void removeDocuments(Document origdoc)
@@ -116,6 +122,9 @@ public class DocumentDatabaseController extends Controller
 		}catch (SQLException e) {
 			System.out.println("Error: Cant remove documents from document database");
 		}
+		
+		if (origdoc.getIsPromotion() == 1) 
+			promotionList.removeDocument(origdoc);
 	}
 	
 	public void updateDocuments(Document origdoc)
@@ -187,6 +196,9 @@ public class DocumentDatabaseController extends Controller
 				System.out.println("Error: journal cannot be updated");
 			}
 		}
+		
+		if (origdoc.getIsPromotion() == 1) 
+			promotionList.updateDocument(origdoc);
 	}
 	
 	public String search(String docName, String docTable)
@@ -210,6 +222,44 @@ public class DocumentDatabaseController extends Controller
 		} catch (SQLException e) { System.out.println("Error: Document's cannot be searched for");}
 		
 		return null;
+	}
+	
+	public ArrayList<Document> getPromotedDocuments()
+	{
+		String sql = "SELECT * FROM " + bookTable + " WHERE isPromotion = ?";
+		ResultSet result;
+		ArrayList<Document> documents = new ArrayList<Document>();
+		
+		try {
+			statement = jdbc_connection.prepareStatement(sql);
+			statement.setInt(1, 1);
+			result = statement.executeQuery();
+			while(result.next()){
+				documents.add(new Book(result.getString("name"), null, null, null, 0, null, 0));
+			}	
+		} catch (SQLException e) { System.out.println("Error: Promoted Books cannot be found");}
+		
+		sql = "SELECT * FROM " + magazineTable + " WHERE isPromotion = ?";
+		try {
+			statement = jdbc_connection.prepareStatement(sql);
+			statement.setInt(1, 1);
+			result = statement.executeQuery();
+			while(result.next()){
+				documents.add(new Magazine(result.getString("name"), null, null, null, 0, 0));
+			}	
+		} catch (SQLException e) { System.out.println("Error: Promoted Magazines cannot be found");}
+		
+		sql = "SELECT * FROM " + journalTable + " WHERE isPromotion = ?";
+		try {
+			statement = jdbc_connection.prepareStatement(sql);
+			statement.setInt(1, 1);
+			result = statement.executeQuery();
+			while(result.next()){
+				documents.add(new Journal(result.getString("name"), null, null, null, 0, null));
+			}	
+		} catch (SQLException e) { System.out.println("Error: Promoted Magazines cannot be found");}
+		
+		return documents;
 	}
 	
 	public static void main(String[] args)

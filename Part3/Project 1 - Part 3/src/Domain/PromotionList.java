@@ -1,27 +1,95 @@
 package Domain;
+import Database.*;
 
 import java.util.ArrayList;
 
 public class PromotionList implements Subject {
 	private ArrayList<Observer> observers;
 	private ArrayList<Document> documents;
+	private static PromotionList promotionList = null;
 	
-	public PromotionList() {
-		// TODO not exactly sure to have a default constructor
+	public static PromotionList getInstance()
+	{
+		if (promotionList == null)
+			promotionList = new PromotionList();
+		return promotionList;
+	}
+	
+	private PromotionList() {
+		observers = new ArrayList<Observer>();
+		documents = new ArrayList<Document>() ;
+		getPromotionDocumentsFromDatabase();
+		getObserversFromDatabase();
+	}
+	
+	// these next two functions could just go in the constructor if we want to follow the design more closly
+	private void getObserversFromDatabase()
+	{
+		UserDatabaseController userDB = new UserDatabaseController();
+		observers = userDB.getPromotionBuyers();
+	}
+	
+	private void getPromotionDocumentsFromDatabase()
+	{
+		DocumentDatabaseController docDB = new DocumentDatabaseController();
+		documents = docDB.getPromotedDocuments();
+	}
+	
+	public void addDocument(Document doc)
+	{
+		documents.add(doc);
+		notifyObservers();
+	}
+	
+	public void removeDocument(Document doc)
+	{
+		for (int i = 0; i < documents.size(); i++) {
+			if (documents.get(i) == doc) {
+				documents.remove(i);
+				break;
+			}
+		}
+		notifyObservers();
+	}
+	
+	public void updateDocument(Document doc) 
+	{
+		for (int i = 0; i < documents.size(); i++) {
+			if (documents.get(i) == doc) {
+				documents.remove(i);
+				break;
+			}
+		}
+		documents.add(doc);
 	}
 
 	public void remove(Observer observer) {
-		// TODO Auto-generated method stub
-		
+		for (int i = 0; i < observers.size(); i++) {
+			if (observers.get(i) == observer) {
+				observers.remove(i);
+				return;
+			}
+		}
 	}
 
 	public void register(Observer observer) {
-		// TODO Auto-generated method stub
-		
+		observers.add(observer);
+		observer.update(documents);
 	}
 
 	public void notifyObservers() {
 		for (Observer o: observers)
 			o.update(documents);
 	}
+	
+	public static void main(String[] args)
+	{
+		PromotionList list = new PromotionList();
+		list.notifyObservers();
+	}
 }	
+
+// Notes:
+// the promotionlist class will have to be created when the program starts up
+// when that happens, it goes into the database and gets the promtion documents and which buyers are registered
+

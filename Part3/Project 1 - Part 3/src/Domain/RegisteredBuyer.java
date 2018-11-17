@@ -4,12 +4,17 @@ import java.util.ArrayList;
 import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
-import javax.activation.*;
 
 public class RegisteredBuyer extends OrdinaryBuyer implements Observer{
 	
 	private Subject promotionList;
 	private ArrayList<Document> documents;
+	
+	public RegisteredBuyer(String u, String p, int i, Subject promotionList) {
+		super(u, p, i);
+		this.promotionList = promotionList;
+		this.promotionList.register(this);
+	}
 	
 	public RegisteredBuyer(String u, String p, int i) {
 		super(u, p, i);
@@ -18,12 +23,11 @@ public class RegisteredBuyer extends OrdinaryBuyer implements Observer{
 	public void unsubscribe() {
 		
 	}
-
-	public void update(ArrayList<Document> documents) {
-		this.documents = documents;
+	
+	public void update(ArrayList<Document> d) {
+		documents = d;
 		
 		String emailmessage = "The documents:\n";
-		int i = 0;
 		for (Document doc: documents)
 			emailmessage += "	" + doc.getName() + "\n";
 		emailmessage += "Are now available in the promotion list";
@@ -60,9 +64,9 @@ public class RegisteredBuyer extends OrdinaryBuyer implements Observer{
 	}
 	
 	public static void main(String[] args) {
-		RegisteredBuyer trial = new RegisteredBuyer("spacesloth605@gmail.com", "huzaifa147", 400);
-		ArrayList<Document >documents = new ArrayList<Document>();
-		documents.add(new Book("Trial Email Book", "Huzman the Snoozman", "November 17, 2018", "Huz and Dan", 1, "Trial Docs", 1));
-		trial.update(documents);
+//		RegisteredBuyer trial = new RegisteredBuyer("spacesloth605@gmail.com", "huzaifa147", 400);
+//		ArrayList<Document >documents = new ArrayList<Document>();
+//		documents.add(new Book("Trial Email Book", "Huzman the Snoozman", "November 17, 2018", "Huz and Dan", 1, "Trial Docs", 1));
+//		trial.update(documents);
 	}
 }

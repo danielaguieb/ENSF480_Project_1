@@ -4,6 +4,7 @@ import Domain.*;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class UserDatabaseController extends Controller
 {
@@ -96,6 +97,23 @@ public class UserDatabaseController extends Controller
 		} catch (SQLException e) { e.printStackTrace(); }
 		return resultInfo;
 
+	}
+	
+	public ArrayList<Observer> getPromotionBuyers()
+	{
+		String sql = "SELECT * FROM " + buyerTable + " WHERE registered = ?";
+		ResultSet result;
+		ArrayList<Observer> observers = new ArrayList<Observer>();
+		try {
+			statement = jdbc_connection.prepareStatement(sql);
+			statement.setInt(1,1);
+			result = statement.executeQuery();
+			while(result.next()){
+				observers.add(new RegisteredBuyer(result.getString("username"), 
+						result.getString("password"), result.getInt("userID")));
+			}
+		} catch (SQLException e) { e.printStackTrace(); }
+		return observers;
 	}
 	
 	//remove the name field maybe?
