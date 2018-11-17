@@ -73,5 +73,31 @@ public class UserDatabaseController extends Controller
 			System.out.println("Error: Cant add documents to document database");
 		}
 	}
+		
+	public String getInfo(String username, String password, String tableName)
+	{
+		String sql = "SELECT * FROM " + tableName + " WHERE username = ? AND password = ?";
+		ResultSet result;
+		String resultInfo = "";
+		try {
+			statement = jdbc_connection.prepareStatement(sql);
+			statement.setString(1,username);
+			statement.setString(2, password);
+			result = statement.executeQuery();
+			if(result.next()){
+				resultInfo += Integer.toString(result.getInt("userID")) + ";" +
+						result.getString("name") + ";" +
+						Integer.toString(result.getInt("registered")) + ";" +
+						result.getString("outstanding_payments");
+			}
+			else {
+				System.out.println("Error: User Info could not be found");
+			}
+		} catch (SQLException e) { e.printStackTrace(); }
+		return resultInfo;
+
+	}
+	
+	//remove the name field maybe?
 	
 }

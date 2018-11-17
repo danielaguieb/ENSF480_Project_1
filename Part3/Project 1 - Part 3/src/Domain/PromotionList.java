@@ -21,7 +21,7 @@ public class PromotionList implements Subject {
 	}
 
 	public void notifyObservers() {
-		// TODO Auto-generated method stub
-		
+		for (Observer o: observers)
+			o.update(documents);
 	}
 }	
