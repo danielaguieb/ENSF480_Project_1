@@ -4,15 +4,15 @@ public class Magazine extends Document
 {
 	private int isOngoing;
 	
-	public Magazine(String name, String author, String pubDate, String publisher, int isPromotion, int isOngoing)
+	public Magazine(String name, String author, String pubDate, String publisher, int isPromotion, double price, int isOngoing)
 	{
-		super(name, author, pubDate, publisher, isPromotion);
+		super(name, author, pubDate, publisher, isPromotion, price);
 		this.isOngoing = isOngoing;
 	}
 	
-	public Magazine(int docID, String name, String author, String pubDate, String publisher, int isPromotion, int isOngoing)
+	public Magazine(int docID, String name, String author, String pubDate, String publisher, int isPromotion, double price, int isOngoing)
 	{
-		super(docID, name, author, pubDate, publisher, isPromotion);
+		super(docID, name, author, pubDate, publisher, isPromotion, price);
 		this.isOngoing = isOngoing;
 	}
 

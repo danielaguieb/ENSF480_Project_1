@@ -17,11 +17,7 @@ public class PromotionList implements Subject {
 	
 	private PromotionList() {
 		observers = new ArrayList<Observer>();
-		documents = new ArrayList<Document>() ;
-//		UserDatabaseController userDB = new UserDatabaseController();
-//		observers = userDB.getPromotionBuyers();
-		//DocumentDatabaseController docDB = new DocumentDatabaseController();
-		//documents = docDB.getPromotedDocuments();
+		documents = new ArrayList<Document>();
 	}
 	
 	public void setDocuments(ArrayList<Document> docs)
@@ -59,7 +55,7 @@ public class PromotionList implements Subject {
 				break;
 			}
 		}
-		documents.add(doc);
+		addDocument(doc);
 	}
 
 	public void remove(Observer observer) {

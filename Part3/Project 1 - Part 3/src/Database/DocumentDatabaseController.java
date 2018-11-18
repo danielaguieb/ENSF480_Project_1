@@ -29,8 +29,8 @@ public class DocumentDatabaseController extends Controller
 		
 		if (origdoc instanceof Book) {
 			Book doc = (Book) origdoc;
-			sql += bookTable + " (name, author, pubDate, publisher, isPromotion, genre, isFiction)" +
-				" VALUES(?, ?, ?, ?, ?, ?, ?)";
+			sql += bookTable + " (name, author, pubDate, publisher, isPromotion, price, genre, isFiction)" +
+				" VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 					
 			try {
 				statement = jdbc_connection.prepareStatement(sql);
@@ -39,8 +39,9 @@ public class DocumentDatabaseController extends Controller
 				statement.setString(3, doc.getPubDate());
 				statement.setString(4, doc.getPublisher());	
 				statement.setInt(5, doc.getIsPromotion());
-				statement.setString(6, doc.getGenre());	
-				statement.setInt(7, doc.isFiction());
+				statement.setDouble(6,  doc.getPrice());
+				statement.setString(7, doc.getGenre());	
+				statement.setInt(8, doc.isFiction());
 				statement.executeUpdate();
 				System.out.println("book now sucessfully added in");
 			} catch (SQLException e) {
@@ -51,8 +52,8 @@ public class DocumentDatabaseController extends Controller
 		else if (origdoc instanceof Magazine) {
 			Magazine doc = (Magazine) origdoc;
 			System.out.println("doc is a magainze");
-			sql += magazineTable + " (name, author, pubDate, publisher, isPromotion, isOngoing)" +
-					" VALUES(?, ?, ?, ?, ?, ?)";
+			sql += magazineTable + " (name, author, pubDate, publisher, isPromotion, price, isOngoing)" +
+					" VALUES(?, ?, ?, ?, ?, ?, ?)";
 						
 				try {
 					statement = jdbc_connection.prepareStatement(sql);
@@ -61,7 +62,8 @@ public class DocumentDatabaseController extends Controller
 					statement.setString(3, doc.getPubDate());
 					statement.setString(4, doc.getPublisher());	
 					statement.setInt(5, doc.getIsPromotion());
-					statement.setInt(6, doc.isOngoing());	
+					statement.setDouble(6, doc.getPrice());
+					statement.setInt(7, doc.isOngoing());	
 					statement.executeUpdate();
 					System.out.println("magazine now successfully added in");
 				} catch (SQLException e) {
@@ -76,8 +78,8 @@ public class DocumentDatabaseController extends Controller
 			for (String co_author: doc.getCo_contributers())
 				co_contributers += co_author;
 			
-			sql += journalTable + " (name, author, pubDate, publisher, isPromotion, contributers)" +
-					" VALUES(?, ?, ?, ?, ?, ?)";
+			sql += journalTable + " (name, author, pubDate, publisher, isPromotion, price, contributers)" +
+					" VALUES(?, ?, ?, ?, ?, ?, ?)";
 						
 				try {
 					statement = jdbc_connection.prepareStatement(sql);
@@ -86,7 +88,8 @@ public class DocumentDatabaseController extends Controller
 					statement.setString(3, doc.getPubDate());
 					statement.setString(4, doc.getPublisher());	
 					statement.setInt(5, doc.getIsPromotion());
-					statement.setString(6, co_contributers);	
+					statement.setDouble(6, doc.getPrice());
+					statement.setString(7, co_contributers);	
 					statement.executeUpdate();
 					System.out.println("journal now successfully added in");
 				} catch (SQLException e) {
@@ -134,7 +137,7 @@ public class DocumentDatabaseController extends Controller
 		
 		if (origdoc instanceof Book) {
 			Book doc = (Book) origdoc;
-			sql += bookTable + " SET name = ?, author = ?, pubDate = ?, publisher = ?, isPromotion = ?, genre = ?, isFiction = ?"
+			sql += bookTable + " SET name = ?, author = ?, pubDate = ?, publisher = ?, isPromotion = ?, price = ?, genre = ?, isFiction = ?"
 					+ " WHERE docID = ?";
 			try {
 				statement = jdbc_connection.prepareStatement(sql);
@@ -143,9 +146,10 @@ public class DocumentDatabaseController extends Controller
 				statement.setString(3, doc.getPubDate());
 				statement.setString(4, doc.getPublisher());
 				statement.setInt(5, doc.getIsPromotion());
-				statement.setString(6, doc.getGenre());
-				statement.setInt(7, doc.isFiction());
-				statement.setInt(8, doc.getDocID());
+				statement.setDouble(6, doc.getPrice());
+				statement.setString(7, doc.getGenre());
+				statement.setInt(8, doc.isFiction());
+				statement.setInt(9, doc.getDocID());
 				statement.executeUpdate();
 				System.out.println("Book has been updated");
 			} catch (SQLException e) {
@@ -156,7 +160,7 @@ public class DocumentDatabaseController extends Controller
 		
 		else if (origdoc instanceof Magazine) {
 			Magazine doc = (Magazine) origdoc;
-			sql += magazineTable + " SET name = ?, author = ?, pubDate = ?, publisher = ?, isPromotion = ?, isOngoing = ?"
+			sql += magazineTable + " SET name = ?, author = ?, pubDate = ?, publisher = ?, isPromotion = ?, price = ?, isOngoing = ?"
 					+ " WHERE docID = ?";
 			try {
 				statement = jdbc_connection.prepareStatement(sql);
@@ -165,8 +169,9 @@ public class DocumentDatabaseController extends Controller
 				statement.setString(3, doc.getPubDate());
 				statement.setString(4, doc.getPublisher());
 				statement.setInt(5, doc.getIsPromotion());
-				statement.setInt(6, doc.isOngoing());
-				statement.setInt(7, doc.getDocID());
+				statement.setDouble(6, doc.getPrice());
+				statement.setInt(7, doc.isOngoing());
+				statement.setInt(8, doc.getDocID());
 				statement.executeUpdate();
 				System.out.println("Magazine has been updated");
 			} catch (SQLException e) {
@@ -180,7 +185,7 @@ public class DocumentDatabaseController extends Controller
 			for (String co_author: doc.getCo_contributers())
 				co_contributers += co_author;
 			
-			sql += magazineTable + " SET name = ?, author = ?, pubDate = ?, publisher = ?, isPromotion = ?, contributers = ?"
+			sql += magazineTable + " SET name = ?, author = ?, pubDate = ?, publisher = ?, isPromotion = ?, price = ?, contributers = ?"
 					+ " WHERE docID = ?";
 			try {
 				statement = jdbc_connection.prepareStatement(sql);
@@ -189,8 +194,9 @@ public class DocumentDatabaseController extends Controller
 				statement.setString(3, doc.getPubDate());
 				statement.setString(4, doc.getPublisher());
 				statement.setInt(5, doc.getIsPromotion());
-				statement.setString(6, co_contributers);
-				statement.setInt(7, doc.getDocID());
+				statement.setDouble(6, doc.getPrice());
+				statement.setString(7, co_contributers);
+				statement.setInt(8, doc.getDocID());
 				statement.executeUpdate();
 				System.out.println("Journal has been updated");
 			} catch (SQLException e) {
@@ -213,7 +219,8 @@ public class DocumentDatabaseController extends Controller
 			if(result.next()){
 				String toreturn = result.getString("name") + ";" + 
 								  result.getString("author") + ";" +
-								  result.getString("genre");
+								  Integer.toString(result.getInt("docId")) + ";" +
+								  Double.toString(result.getDouble("price"));
 				return toreturn;
 			}
 			else {
@@ -236,7 +243,7 @@ public class DocumentDatabaseController extends Controller
 			statement.setInt(1, 1);
 			result = statement.executeQuery();
 			while(result.next()){
-				documents.add(new Book(result.getString("name"), null, null, null, 0, null, 0));
+				documents.add(new Book(result.getString("name"), null, null, null, 0, 0, null, 0));
 			}	
 		} catch (SQLException e) { System.out.println("Error: Promoted Books cannot be found");}
 		
@@ -246,7 +253,7 @@ public class DocumentDatabaseController extends Controller
 			statement.setInt(1, 1);
 			result = statement.executeQuery();
 			while(result.next()){
-				documents.add(new Magazine(result.getString("name"), null, null, null, 0, 0));
+				documents.add(new Magazine(result.getString("name"), null, null, null, 0, 0, 0));
 			}	
 		} catch (SQLException e) { System.out.println("Error: Promoted Magazines cannot be found");}
 		
@@ -256,7 +263,7 @@ public class DocumentDatabaseController extends Controller
 			statement.setInt(1, 1);
 			result = statement.executeQuery();
 			while(result.next()){
-				documents.add(new Journal(result.getString("name"), null, null, null, 0, null));
+				documents.add(new Journal(result.getString("name"), null, null, null, 0, 0, null));
 			}	
 		} catch (SQLException e) { System.out.println("Error: Promoted Magazines cannot be found");}
 		

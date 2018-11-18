@@ -8,19 +8,21 @@ public abstract class Document
 	protected String pubDate;
 	protected String publisher;
 	protected int isPromotion;
+	protected double price;
 	
-	public Document(String name, String author, String pubDate, String publisher, int isPromotion)
+	public Document(String name, String author, String pubDate, String publisher, int isPromotion, double price)
 	{
 		this.name = name;
 		this.author = author;
 		this.pubDate = pubDate;
 		this.publisher = publisher;
 		this.isPromotion = isPromotion;
+		this.price = price;
 	}
 	
-	public Document(int docID, String name, String author, String pubDate, String publisher, int isPromotion)
+	public Document(int docID, String name, String author, String pubDate, String publisher, int isPromotion, double price)
 	{
-		this(name, author, pubDate, publisher, isPromotion);
+		this(name, author, pubDate, publisher, isPromotion, price);
 		this.docID = docID;
 	}
 
@@ -70,5 +72,13 @@ public abstract class Document
 
 	public void setIsPromotion(int isPromotion) {
 		this.isPromotion = isPromotion;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
 	}
 }

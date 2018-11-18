@@ -5,16 +5,16 @@ public class Book extends Document
 	private String genre;
 	private int isFiction;
 	
-	public Book(String name, String author, String pubDate, String publisher, int isPromotion, String genre, int isFiction)
+	public Book(String name, String author, String pubDate, String publisher, int isPromotion, double price, String genre, int isFiction)
 	{
-		super(name, author, pubDate, publisher, isPromotion);
+		super(name, author, pubDate, publisher, isPromotion, price);
 		this.genre = genre;
 		this.isFiction = isFiction;
 	}
 	
-	public Book(int docID, String name, String author, String pubDate, String publisher, int isPromotion, String genre, int isFiction)
+	public Book(int docID, String name, String author, String pubDate, String publisher, int isPromotion, double price, String genre, int isFiction)
 	{
-		super(docID, name, author, pubDate, publisher, isPromotion);
+		super(docID, name, author, pubDate, publisher, isPromotion, price);
 		this.genre = genre;
 		this.isFiction = isFiction;
 	}

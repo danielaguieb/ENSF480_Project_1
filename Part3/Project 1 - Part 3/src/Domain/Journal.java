@@ -6,15 +6,15 @@ public class Journal extends Document
 {
 	private ArrayList<String> co_contributers;
 	
-	public Journal(String name, String author, String pubDate, String publisher, int isPromotion, ArrayList<String> co_contributers)
+	public Journal(String name, String author, String pubDate, String publisher, int isPromotion, double price, ArrayList<String> co_contributers)
 	{
-		super(name, author, pubDate, publisher, isPromotion);
+		super(name, author, pubDate, publisher, isPromotion, price);
 		this.co_contributers = co_contributers;
 	}
 	
-	public Journal(int docID, String name, String author, String pubDate, String publisher, int isPromotion, ArrayList<String> co_contributers)
+	public Journal(int docID, String name, String author, String pubDate, String publisher, int isPromotion, double price, ArrayList<String> co_contributers)
 	{
-		super(docID, name, author, pubDate, publisher, isPromotion);
+		super(docID, name, author, pubDate, publisher, isPromotion, price);
 		this.co_contributers = co_contributers;
 	}
 
