@@ -5,7 +5,6 @@ import java.awt.CardLayout;
 import java.awt.Container;
 import java.awt.GridLayout;
 
-import javax.naming.directory.SearchControls;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -13,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
 
 import Database.*;
@@ -52,7 +52,7 @@ public class BuyerForm extends Form {
 		
 		createFrame(name, ID);
 
-		setSize(420,315);		// placeholder dimensions
+//		setSize(420,315);		// placeholder dimensions
 		setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
@@ -107,6 +107,7 @@ public class BuyerForm extends Form {
 						JPanel promolistPanel = new JPanel();	
 							promoJList = new JList<String>();
 							promoJList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+							ListModel<String> listModel = new List
 						cardPanels.add(promolistPanel, "PROMOPANEL");
 					}
 				mainPanelCenter.add(cardPanels, BorderLayout.CENTER);
