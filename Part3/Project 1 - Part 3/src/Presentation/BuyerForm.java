@@ -8,10 +8,12 @@ import java.awt.GridLayout;
 import javax.naming.directory.SearchControls;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 
 import Database.*;
 
@@ -24,9 +26,9 @@ public class BuyerForm extends Form {
 //	JLabel name, id;
 	JTextField searchTextField;
 	JButton searchButton, placeOrderButton, registerButton, accessPromotionListButton;
-	JTextArea docName, docAuthors, docID, docPrice;
+	JTextArea docNameTextArea, docAuthorsTextArea, docIDTextArea, docPriceTextArea;
 	
-	
+	JList<String> promoJList;
 	
 	
 	
@@ -57,6 +59,10 @@ public class BuyerForm extends Form {
 	
 	public void createFrame(String n, int i){
 		
+		
+		// for testing, isRegistered is true
+		
+		
 		JPanel mainPanel = new JPanel(new BorderLayout());
 		
 			JPanel userInfoPanel = new JPanel();
@@ -74,11 +80,10 @@ public class BuyerForm extends Form {
 					searchAndRegister.add(searchButton);
 					searchAndRegister.add(placeOrderButton);
 					
-					// requires that the controller has the function isRegistered
-					// for testing, consider that isRegistered is true
 					if (isRegistered) {
-						registerButton.setText("Register");
-						accessPromotionListButton.setText("Access Promo List");
+						registerButton = new JButton("Register");
+						accessPromotionListButton = new JButton("Access promotion list");
+						
 						searchAndRegister.add(searchButton);
 						searchAndRegister.add(registerButton);
 					}
@@ -88,18 +93,21 @@ public class BuyerForm extends Form {
 				// card 1 will be for a search, card 2 will be for promotion list
 				JPanel cardPanels = new JPanel(new CardLayout());
 					JPanel documentInfo = new JPanel(new GridLayout(4, 1));
-						docName = new JTextArea();
-						docAuthors = new JTextArea();
-						docID = new JTextArea();
-						docPrice = new JTextArea();
-						documentInfo.add(docName);
-						documentInfo.add(docAuthors);
-						documentInfo.add(docID);
-						documentInfo.add(docPrice);
+						docNameTextArea = new JTextArea();
+						docAuthorsTextArea = new JTextArea();
+						docIDTextArea = new JTextArea();
+						docPriceTextArea = new JTextArea();
+						documentInfo.add(docNameTextArea);
+						documentInfo.add(docAuthorsTextArea);
+						documentInfo.add(docIDTextArea);
+						documentInfo.add(docPriceTextArea);
 					cardPanels.add(documentInfo, "DOCPANEL");
 					
 					if (isRegistered) {
 						JPanel promolistPanel = new JPanel();	
+							promoJList = new JList<String>();
+							promoJList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+						cardPanels.add(promolistPanel, "PROMOPANEL");
 					}
 				mainPanelCenter.add(cardPanels, BorderLayout.CENTER);
 					
