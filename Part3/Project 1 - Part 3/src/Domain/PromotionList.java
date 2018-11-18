@@ -18,19 +18,8 @@ public class PromotionList implements Subject {
 	private PromotionList() {
 		observers = new ArrayList<Observer>();
 		documents = new ArrayList<Document>() ;
-		getPromotionDocumentsFromDatabase();
-		getObserversFromDatabase();
-	}
-	
-	// these next two functions could just go in the constructor if we want to follow the design more closly
-	private void getObserversFromDatabase()
-	{
 		UserDatabaseController userDB = new UserDatabaseController();
 		observers = userDB.getPromotionBuyers();
-	}
-	
-	private void getPromotionDocumentsFromDatabase()
-	{
 		DocumentDatabaseController docDB = new DocumentDatabaseController();
 		documents = docDB.getPromotedDocuments();
 	}

@@ -5,6 +5,8 @@ import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
 
+import Database.*;
+
 public class RegisteredBuyer extends OrdinaryBuyer implements Observer{
 	
 	private Subject promotionList;
@@ -21,7 +23,9 @@ public class RegisteredBuyer extends OrdinaryBuyer implements Observer{
 	}
 	
 	public void unsubscribe() {
-		
+		UserDatabaseController userDB = new UserDatabaseController();
+		userDB.unregister(this);
+		promotionList.remove(this); 
 	}
 	
 	public void update(ArrayList<Document> d) {
@@ -49,7 +53,7 @@ public class RegisteredBuyer extends OrdinaryBuyer implements Observer{
 					});
 			
 			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress("huzaifa.amar@ucalgary"));
+			message.setFrom(new InternetAddress(username));
 			message.setRecipient(Message.RecipientType.TO, internetaddress);
 			message.setSubject("Promotion List has Been Updated");
 			message.setText(emailmessage);
