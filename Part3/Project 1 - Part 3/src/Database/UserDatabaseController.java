@@ -10,12 +10,16 @@ public class UserDatabaseController extends Controller
 {
 	private String buyerTable;
 	private String operatorTable; //might not even be used
+	private PromotionList promotionList;
+ 
 	
 	public UserDatabaseController()
 	{
 		super("userdatabase");
 		buyerTable = "buyer";
 		operatorTable = "operator";
+		promotionList = PromotionList.getInstance();
+		promotionList.setObservers(getPromotionBuyers());
 	}
 	
 	public void makePayments(OrdinaryBuyer buyer, Double payment)
