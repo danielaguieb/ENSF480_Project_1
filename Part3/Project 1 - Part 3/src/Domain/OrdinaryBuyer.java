@@ -20,6 +20,7 @@ public class OrdinaryBuyer extends User {
 
 	public OrdinaryBuyer(String u, String p, int i) {
 		super(u, p, i);
+		transactionList = new ArrayList<TransactionHistory>();
 	}
 	
 	public void register()
@@ -27,6 +28,7 @@ public class OrdinaryBuyer extends User {
 		// once this buyer registers, it should be added to the promotion list's list of observers. 
 		// but it will still an instance of OrdinaryBuyer, and therefore cause problems
 		// it might be wise to simply remake the class as a registeredBuyer
+		// if thats the case then the registeredbuyer's 
 	}
 	
 	public void placeOrder(String docName)
