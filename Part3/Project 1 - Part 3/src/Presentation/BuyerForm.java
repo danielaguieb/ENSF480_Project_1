@@ -1,9 +1,11 @@
 package Presentation;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Container;
 import java.awt.GridLayout;
 
+import javax.naming.directory.SearchControls;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -16,21 +18,41 @@ import Database.*;
 public class BuyerForm extends Form {
 	
 	private Container container;
+	private boolean isRegistered;
 	
 	JRadioButton book, magazine, journal;
 //	JLabel name, id;
 	JTextField searchTextField;
-	JButton searchButton;
-	JTextArea documentName, documentID;
+	JButton searchButton, placeOrderButton, registerButton, accessPromotionListButton;
+	JTextArea docName, docAuthors, docID, docPrice;
 	
-	public BuyerForm(String n, int i, Controller c) {
+	
+	
+	
+	
+	
+	
+	
+	// STILL TODO MAKE THE JLIST STUFF WORKING
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public BuyerForm(String n, int i, Controller c, boolean isRegistered) {
 		super(n,i,c);
+		this.isRegistered = isRegistered;
 		
 		createFrame(name, ID);
-		
+
 		setSize(420,315);		// placeholder dimensions
 		setResizable(false);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);		
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 	
 	public void createFrame(String n, int i){
@@ -43,17 +65,44 @@ public class BuyerForm extends Form {
 			mainPanel.add(userInfoPanel, BorderLayout.NORTH);
 			
 			JPanel mainPanelCenter = new JPanel(new BorderLayout());
-				JPanel searchRow = new JPanel();
-					searchRow.add(searchTextField);
-					searchRow.add(searchButton);
-				mainPanelCenter.add(searchRow, BorderLayout.NORTH);
+				JPanel searchAndRegister = new JPanel();
+					searchTextField.setText("Search for a document");
+					searchButton.setText("Search");
+					placeOrderButton.setText("Place Order");
+					
+					searchAndRegister.add(searchTextField);
+					searchAndRegister.add(placeOrderButton);
+					
+					// requires that the controller has the function isRegistered
+					// for testing, consider that isRegistered is true
+					if (isRegistered) {
+						registerButton.setText("Register");
+						accessPromotionListButton.setText("Access Promo List");
+						searchAndRegister.add(searchButton);
+						searchAndRegister.add(registerButton);
+					}
+					
+				mainPanelCenter.add(searchAndRegister, BorderLayout.NORTH);
 				
-				JPanel documentInfo = new JPanel(new GridLayout(2, 1));
-					documentName.setText("");
-					documentID.setText("");
-					documentInfo.add(documentName);
-					documentInfo.add(documentID);
-				mainPanelCenter.add(documentInfo, BorderLayout.CENTER);
+				// card 1 will be for a search, card 2 will be for promotion list
+				JPanel cardPanels = new JPanel(new CardLayout());
+					JPanel documentInfo = new JPanel(new GridLayout(4, 1));
+						docName.setText("");
+						docAuthors.setText("");
+						docID.setText("");
+						docPrice.setText("");
+						documentInfo.add(docName);
+						documentInfo.add(docAuthors);
+						documentInfo.add(docID);
+						documentInfo.add(docPrice);
+					cardPanels.add(documentInfo, "DOCPANEL");
+					
+					if (isRegistered) {
+						JPanel promolistPanel = new JPanel();	
+					}
+				mainPanelCenter.add(cardPanels, BorderLayout.CENTER);
+					
+				
 			mainPanel.add(mainPanelCenter, BorderLayout.CENTER);
 		
 		getContentPane().add(mainPanel);
@@ -92,7 +141,7 @@ public class BuyerForm extends Form {
 	
 	public static void main(String[] args) {
 		
-		BuyerForm buyerForm = new BuyerForm("Dan", 12, new DocumentDatabaseController());
+		BuyerForm buyerForm = new BuyerForm("Dan", 12, new DocumentDatabaseController(), true);
 		buyerForm.setVisible(true);
 		
 	}
