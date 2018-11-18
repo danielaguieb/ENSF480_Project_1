@@ -269,19 +269,59 @@ public class DocumentDatabaseController extends Controller
 		
 		return documents;
 	}
+	public double getPriceDoc(String docName)
+	{
+		String sql = "SELECT * FROM " + bookTable + " WHERE name = ?";
+		ResultSet result;
+		
+		try {
+			statement = jdbc_connection.prepareStatement(sql);
+			statement.setString(1, docName);
+			result = statement.executeQuery();
+			if(result.next()){
+				System.out.println("The Doc was found in the book table");
+				return result.getDouble("price");
+			}	
+		} catch (SQLException e) { System.out.println("Error: Price Searching Messed Up");}
+		
+		try {
+			sql = "SELECT * FROM " + magazineTable + " WHERE name = ?";
+			statement = jdbc_connection.prepareStatement(sql);
+			statement.setString(1, docName);
+			result = statement.executeQuery();
+			if(result.next()){
+				System.out.println("The Doc was found in the magazine table");
+				return result.getDouble("price");
+			}	
+		} catch (SQLException e) { System.out.println("Error: Price Searching Messed Up");}
+		
+		try {
+			sql = "SELECT * FROM " + journalTable + " WHERE name = ?";
+			statement = jdbc_connection.prepareStatement(sql);
+			statement.setString(1, docName);
+			result = statement.executeQuery();
+			if(result.next()){
+				System.out.println("The Doc was found in the journal table");
+				return result.getDouble("price");
+			}	
+		} catch (SQLException e) { System.out.println("Error: Price Searching Messed Up");}
+		
+		return -1;
+	}
 	
 	public static void main(String[] args)
 	{
-		DocumentDatabaseController databaseController = new DocumentDatabaseController();
-//		Book book = new Book("Trial Book", "Huz", "November 16, 2018", "Backend development", 0, "Jokes", 1);
-//		databaseController.addDocuments(book);
+		//DocumentDatabaseController databaseController = new DocumentDatabaseController();
+		//Book book = new Book("Trial Book", "Huz", "November 16, 2018", "Backend development", 0, "Jokes", 1);
+		//databaseController.addDocuments(book);
 		//Magazine magazine = new Magazine("My First Magazine", "Daniel Guieb", "October 1, 1965", "Daniel's Mom", 1, 1);
 		//databaseController.addDocuments(magazine);
 		//Book book = new Book(3, null, null, null, null, 0, null, 0);
 		//databaseController.removeDocuments(book);
 		//Book book = new Book(2, "Journey to the Centre of the Earth", "Jules Verne", "March 18, 1844", "Penguin House", 0, "science fantasy", 1);
 		//databaseController.updateDocuments(book);
-		System.out.println(databaseController.search("Trial Book", "book"));
+		//System.out.println(databaseController.search("Trial Book", "book"));
+		//System.out.println(databaseController.getPriceDoc("Journal 1"));
 		
 	}
 	

@@ -12,6 +12,8 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import Database.DocumentDatabaseController;
+import Database.UserDatabaseController;
 import Presentation.BuyerForm;
 
 public class OrdinaryBuyer extends User {
@@ -36,10 +38,16 @@ public class OrdinaryBuyer extends User {
 		// the idea here is that you can place an order for a doc by typing in the doc's name or whatever
 		// im going of the assumption that were just typing that name directly like its not displaying the 
 		// name in a JList we just now the name of the doc
-		// does he have to pay for the doc?
-		String emailmessage = "You have placed an order for: " + docName + ". Your order will arrive in 3-5 buisness days; "
-				+ "an e-mail will be sent to notify you when it arrives. Please go to the University of Calgary for pickup. You will be asked to pay"
-				+ " in person at the Taylor Family Digital Library. We accept cash, debit, and visa.";
+		
+		// im going to need to know the doc's price
+		
+		DocumentDatabaseController docDB = new DocumentDatabaseController();
+		double price = docDB.getPriceDoc(docName);
+		
+		String emailmessage = "You have placed an order for: " + docName + ". It costs " + price + ", and the money has been added to your outstanding_payments";
+		
+		UserDatabaseController userDB = new UserDatabaseController();
+		userDB.addToOutstandingPayments(this, docName, price);
 		
 		try {
 			InternetAddress internetaddress = new InternetAddress(username);

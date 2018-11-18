@@ -22,6 +22,32 @@ public class UserDatabaseController extends Controller
 		promotionList.setObservers(getPromotionBuyers());
 	}
 	
+	public void addToOutstandingPayments(OrdinaryBuyer buyer, String docName, double price)
+	{
+		String sql = "SELECT * FROM " + buyerTable + " WHERE userID = ?";
+		ResultSet result;
+		try {
+			statement = jdbc_connection.prepareStatement(sql);
+			statement.setInt(1, buyer.getUserID());
+			result = statement.executeQuery();
+			if(result.next()){
+				double currentPayments = result.getDouble("outstanding_payments");
+				double newPayments = currentPayments + price;
+				sql = "UPDATE " + buyerTable + 
+						" SET outstanding_payments = ?" +
+						" WHERE userID = ?";
+				statement = jdbc_connection.prepareStatement(sql);
+				statement.setDouble(1, newPayments);
+				statement.setInt(2, buyer.getUserID());
+				statement.executeUpdate(); 
+			}
+			else {
+				System.out.println("Error: User's outstanding payments could not be updated");
+				
+			}
+		} catch (SQLException e) { e.printStackTrace(); }	
+	}
+	
 	public void makePayments(OrdinaryBuyer buyer, Double payment)
 	{
 		String sql = "SELECT * FROM " + buyerTable + " WHERE userID = ?";
@@ -46,10 +72,7 @@ public class UserDatabaseController extends Controller
 				System.out.println("Error: Book not found");
 				
 			}
-		} catch (SQLException e) { e.printStackTrace(); }
-		
-		//buyer.addTransaction(payment);
-		
+		} catch (SQLException e) { e.printStackTrace(); }		
 	}
 	
 	public void register(OrdinaryBuyer ordinaryBuyer)
