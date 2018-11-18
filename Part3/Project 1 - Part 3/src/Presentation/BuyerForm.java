@@ -66,11 +66,12 @@ public class BuyerForm extends Form {
 			
 			JPanel mainPanelCenter = new JPanel(new BorderLayout());
 				JPanel searchAndRegister = new JPanel();
-					searchTextField.setText("Search for a document");
-					searchButton.setText("Search");
-					placeOrderButton.setText("Place Order");
+					searchTextField = new JTextField("Search for a document", 20);
+					searchButton = new JButton("Search");
+					placeOrderButton = new JButton("Place order");
 					
 					searchAndRegister.add(searchTextField);
+					searchAndRegister.add(searchButton);
 					searchAndRegister.add(placeOrderButton);
 					
 					// requires that the controller has the function isRegistered
@@ -87,10 +88,10 @@ public class BuyerForm extends Form {
 				// card 1 will be for a search, card 2 will be for promotion list
 				JPanel cardPanels = new JPanel(new CardLayout());
 					JPanel documentInfo = new JPanel(new GridLayout(4, 1));
-						docName.setText("");
-						docAuthors.setText("");
-						docID.setText("");
-						docPrice.setText("");
+						docName = new JTextArea();
+						docAuthors = new JTextArea();
+						docID = new JTextArea();
+						docPrice = new JTextArea();
 						documentInfo.add(docName);
 						documentInfo.add(docAuthors);
 						documentInfo.add(docID);
