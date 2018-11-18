@@ -2,13 +2,19 @@ package Presentation;
 
 import java.awt.Container;
 
+import javax.swing.JLabel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+
 import Database.*;
 
 public class BuyerForm extends Form {
 	
 	private Container container;
 	
-	
+	JRadioButton book, magazine, journal;
+	JLabel name, id;
+	JTextField search;
 	
 	public BuyerForm(String n, int i, Controller c) {
 		super(n,i,c);
