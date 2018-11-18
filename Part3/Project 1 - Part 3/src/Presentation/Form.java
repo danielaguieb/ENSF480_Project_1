@@ -11,9 +11,9 @@ import Database.*;
 
 public abstract class Form extends JFrame{
 
-	private String name;
-	private int ID;
-	private Controller controller;
+	protected String name;
+	protected int ID;
+	protected Controller controller;
 	
 	public Form() {
 		name = null;
