@@ -20,6 +20,7 @@ public class DocumentDatabaseController extends Controller
 		journalTable = "journal";
 		magazineTable = "magazine";
 		promotionList = PromotionList.getInstance();
+		promotionList.setDocuments(getPromotedDocuments());
 	}
 	
 	public void addDocuments(Document origdoc)

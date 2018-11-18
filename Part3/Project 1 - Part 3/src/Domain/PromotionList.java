@@ -24,6 +24,11 @@ public class PromotionList implements Subject {
 		//documents = docDB.getPromotedDocuments();
 	}
 	
+	public void setDocuments(ArrayList<Document> docs)
+	{
+		documents = docs;
+	}
+	
 	public void addDocument(Document doc)
 	{
 		documents.add(doc);
