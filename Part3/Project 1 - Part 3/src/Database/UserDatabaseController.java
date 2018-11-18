@@ -44,6 +44,8 @@ public class UserDatabaseController extends Controller
 			}
 		} catch (SQLException e) { e.printStackTrace(); }
 		
+		//buyer.addTransaction(payment);
+		
 	}
 	
 	public void register(OrdinaryBuyer ordinaryBuyer)

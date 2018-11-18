@@ -20,8 +20,8 @@ public class PromotionList implements Subject {
 		documents = new ArrayList<Document>() ;
 		UserDatabaseController userDB = new UserDatabaseController();
 		observers = userDB.getPromotionBuyers();
-		DocumentDatabaseController docDB = new DocumentDatabaseController();
-		documents = docDB.getPromotedDocuments();
+		//DocumentDatabaseController docDB = new DocumentDatabaseController();
+		//documents = docDB.getPromotedDocuments();
 	}
 	
 	public void addDocument(Document doc)
