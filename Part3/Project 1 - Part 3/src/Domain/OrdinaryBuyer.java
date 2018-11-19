@@ -2,6 +2,7 @@ package Domain;
 
 import java.util.ArrayList;
 import java.util.Properties;
+import java.util.function.DoubleToLongFunction;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -66,9 +67,9 @@ public class OrdinaryBuyer extends User {
 					});
 			
 			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress("huzaifa.amar@ucalgary"));
+			message.setFrom(new InternetAddress(username));
 			message.setRecipient(Message.RecipientType.TO, internetaddress);
-			message.setSubject("Promotion List has Been Updated");
+			message.setSubject("Order Successfully Placed");
 			message.setText(emailmessage);
 			Transport.send(message); // Send the Email Message
 			
@@ -79,10 +80,17 @@ public class OrdinaryBuyer extends User {
 		}
 	}
 	
+	// might be the gui that does this but ill just add this in anyways
+	public void makePayments(double payment)
+	{
+		UserDatabaseController userDB = new UserDatabaseController();
+		userDB.makePayments(this, payment);
+	}
+	
 	public static void main(String[] args)
 	{
 		OrdinaryBuyer buyer = new OrdinaryBuyer("spacesloth605@gmail.com", "huzaifa147", 400);
-		buyer.placeOrder("My First Magazine");
+		buyer.makePayments(100);
 	}
 
 }

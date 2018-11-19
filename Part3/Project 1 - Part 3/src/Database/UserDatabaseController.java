@@ -43,6 +43,32 @@ public class UserDatabaseController extends Controller
 			}
 			else {
 				System.out.println("Error: User's outstanding payments could not be updated");
+			}
+		} catch (SQLException e) { e.printStackTrace(); }	
+	}
+	
+	public double getPayments(int userID)
+	{
+		String sql = "SELECT * FROM " + buyerTable + " WHERE userID = ?";
+		ResultSet result;
+		try {
+			statement = jdbc_connection.prepareStatement(sql);
+			statement.setInt(1, buyer.getUserID());
+			result = statement.executeQuery();
+			if(result.next()){
+				Double previous_payment = result.getDouble("outstanding_payments");
+				Double new_payment = previous_payment - payment;
+				if (new_payment < 0.0) new_payment = 0.0;
+				sql = "UPDATE " + buyerTable + 
+						" SET outstanding_payments = ?" +
+						" WHERE userID = ?";
+				statement = jdbc_connection.prepareStatement(sql);
+				statement.setDouble(1, new_payment);
+				statement.setInt(2, buyer.getUserID());
+				statement.executeUpdate();
+			}
+			else {
+				System.out.println("Error: Book not found");
 				
 			}
 		} catch (SQLException e) { e.printStackTrace(); }	
