@@ -48,13 +48,13 @@ public class UserDatabaseController extends Controller
 		} catch (SQLException e) { e.printStackTrace(); }	
 	}
 	
-	public void makePayments(OrdinaryBuyer buyer, Double payment)
+	public void makePayments(int userID, Double payment)
 	{
 		String sql = "SELECT * FROM " + buyerTable + " WHERE userID = ?";
 		ResultSet result;
 		try {
 			statement = jdbc_connection.prepareStatement(sql);
-			statement.setInt(1, buyer.getUserID());
+			statement.setInt(1, userID));
 			result = statement.executeQuery();
 			if(result.next()){
 				Double previous_payment = result.getDouble("outstanding_payments");
@@ -65,7 +65,7 @@ public class UserDatabaseController extends Controller
 						" WHERE userID = ?";
 				statement = jdbc_connection.prepareStatement(sql);
 				statement.setDouble(1, new_payment);
-				statement.setInt(2, buyer.getUserID());
+				statement.setInt(2, userID);
 				statement.executeUpdate();
 			}
 			else {
@@ -75,14 +75,14 @@ public class UserDatabaseController extends Controller
 		} catch (SQLException e) { e.printStackTrace(); }		
 	}
 	
-	public void register(OrdinaryBuyer ordinaryBuyer)
+	public void register(int userID)
 	{
 		String sql = "UPDATE " + buyerTable + 
 				" SET registered = ? WHERE userID = ?";
 		try {
 			statement = jdbc_connection.prepareStatement(sql);
 			statement.setInt(1, 1);
-			statement.setInt(2, ordinaryBuyer.getUserID());
+			statement.setInt(2, userID);
 			statement.executeUpdate();
 		}catch (SQLException e) {
 			System.out.println("Error: Cant add documents to document database");

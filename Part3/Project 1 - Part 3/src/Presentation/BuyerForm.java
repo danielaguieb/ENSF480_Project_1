@@ -1,142 +1,68 @@
 package Presentation;
 
-import java.awt.BorderLayout;
-import java.awt.CardLayout;
-import java.awt.Container;
-import java.awt.GridLayout;
-
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.ListModel;
-import javax.swing.ListSelectionModel;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 import Database.*;
+import Domain.Document;
 
 public class BuyerForm extends Form {
 	
-	private Container container;
 	private boolean isRegistered;
+	private Controller userDBC;
 	
-	JRadioButton book, magazine, journal;
-//	JLabel name, id;
-	JTextField searchTextField;
-	JButton searchButton, placeOrderButton, registerButton, accessPromotionListButton;
-	JTextArea docNameTextArea, docAuthorsTextArea, docIDTextArea, docPriceTextArea;
-	
-	JList<String> promoJList;
-	
-	
-	
-	
-	
-	
-	// STILL TODO MAKE THE JLIST STUFF WORKING
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public BuyerForm(String n, int i, Controller c, boolean isRegistered) {
-		super(n,i,c);
+	public BuyerForm(String n, int i, Controller docDBC, Controller userDBC, boolean isRegistered) {
+		super(n,i,docDBC);
+		this.userDBC = userDBC;
 		this.isRegistered = isRegistered;
-		
-		createFrame(name, ID);
-
-//		setSize(420,315);		// placeholder dimensions
-		setResizable(false);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 	
-	public void createFrame(String n, int i){
+	public void checkRegistered() {
+		if(isRegistered)
+			System.out.println("User registered status is: TRUE");
+		else
+			System.out.println("User registered status is: FALSE");
+	}
+	
+	// searches for document in database through the controller
+	public void search(String docType, String docName) {
+		DocumentDatabaseController docDBC = (DocumentDatabaseController) controller;
 		
+		String result = docDBC.search(docName, docType);
+		if (result!=null)
+			System.out.println(result);
+	}
+	
+	// order a document if it exists
+	public void order(String docType, String docName) {
+		DocumentDatabaseController docDBC = (DocumentDatabaseController) controller;
 		
-		// for testing, isRegistered is true
-		
-		
-		JPanel mainPanel = new JPanel(new BorderLayout());
-		
-			JPanel userInfoPanel = new JPanel();
-				userInfoPanel.add(new JLabel(name));
-				userInfoPanel.add(new JLabel(""+ID));
-			mainPanel.add(userInfoPanel, BorderLayout.NORTH);
+		// TODO 
+//		String result = docDBC.order(docName, docType);
+//		if (result!=null)
+//			System.out.println(result);
+	}
+	
+	public void checkPayments() {
+		UserDatabaseController UDBC = (UserDatabaseController) userDBC;
+		System.out.println("Payments left: " + UDBC.checkPayments() );
+	}
+	
+	// make a payment to outstanding payments
+	public void makePayment(int userID, double payment) {
+		UserDatabaseController UDBC = (UserDatabaseController) userDBC;
+		UDBC.makePayments(userID, payment);
+	}
+	
+	// register to be a registered buyer
+	public void register(int userID) {		
+		if(isRegistered)
+			System.out.println("Error: Already registered");
+		else {
+			UserDatabaseController UDBC = (UserDatabaseController) userDBC;
+			UDBC.register(userID);
 			
-			JPanel mainPanelCenter = new JPanel(new BorderLayout());
-				JPanel searchAndRegister = new JPanel();
-					searchTextField = new JTextField("Search for a document", 20);
-					searchButton = new JButton("Search");
-					placeOrderButton = new JButton("Place order");
-					
-					searchAndRegister.add(searchTextField);
-					searchAndRegister.add(searchButton);
-					searchAndRegister.add(placeOrderButton);
-					
-					if (isRegistered) {
-						registerButton = new JButton("Register");
-						accessPromotionListButton = new JButton("Access promotion list");
-						
-						searchAndRegister.add(searchButton);
-						searchAndRegister.add(registerButton);
-					}
-					
-				mainPanelCenter.add(searchAndRegister, BorderLayout.NORTH);
-				
-				// card 1 will be for a search, card 2 will be for promotion list
-				JPanel cardPanels = new JPanel(new CardLayout());
-					JPanel documentInfo = new JPanel(new GridLayout(4, 1));
-						docNameTextArea = new JTextArea();
-						docAuthorsTextArea = new JTextArea();
-						docIDTextArea = new JTextArea();
-						docPriceTextArea = new JTextArea();
-						documentInfo.add(docNameTextArea);
-						documentInfo.add(docAuthorsTextArea);
-						documentInfo.add(docIDTextArea);
-						documentInfo.add(docPriceTextArea);
-					cardPanels.add(documentInfo, "DOCPANEL");
-					
-					if (isRegistered) {
-						JPanel promolistPanel = new JPanel();	
-							promoJList = new JList<String>();
-							promoJList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-							ListModel<String> listModel = new List
-						cardPanels.add(promolistPanel, "PROMOPANEL");
-					}
-				mainPanelCenter.add(cardPanels, BorderLayout.CENTER);
-					
-				
-			mainPanel.add(mainPanelCenter, BorderLayout.CENTER);
-		
-		getContentPane().add(mainPanel);
-		
-	}
-
-	// TODO searches for document in database
-	public void search() {
-		
-	}
-	
-	// TODO order a document that exists
-	public void order() {
-		
-	}
-	
-	// TODO pay for a document
-	public void pay() {
-		
-	}
-	
-	// TODO register to be a registered buyer
-	public void register() {
-		
+		}
 	}
 	
 	// TODO registered buyer unregisters and becomes ordinary
@@ -144,15 +70,76 @@ public class BuyerForm extends Form {
 		
 	}
 	
-	// TODO access promotion list as a registered buyer
+	// access promotion list as a registered buyer
 	public void accessPromotionList() {
+		DocumentDatabaseController docDBC = (DocumentDatabaseController) controller;
 		
+		ArrayList<Document> promoDocs = docDBC.getPromotedDocuments();
+		promoDocs.forEach((doc) -> System.out.println(doc.toString()));
+		System.out.println();
 	}
 	
 	public static void main(String[] args) {
 		
-		BuyerForm buyerForm = new BuyerForm("Dan", 12, new DocumentDatabaseController(), true);
-		buyerForm.setVisible(true);
+		BuyerForm buyerForm = new BuyerForm("Dan", 12, new DocumentDatabaseController(), new UserDatabaseController(),true);
+		String lineIn;
+		String[] inputs;
+		Scanner sc = new Scanner(System.in);
+		
+		for(lineIn = sc.nextLine(); lineIn.toLowerCase().compareTo("quit") == 0;
+				lineIn = sc.nextLine()) {
+			
+			inputs = lineIn.split(" ");
+			switch (inputs[0].toLowerCase()) {	
+				
+			case "search":
+					buyerForm.search(inputs[1], inputs[2]);
+				break;
+				
+			case "placeorder":
+				buyerForm.order(inputs[1], inputs[2]);
+//				???
+			
+			case "makepayments":
+				buyerForm.makePayment(Integer.parseInt(inputs[1]));
+				break;
+			
+				
+			case "isregistered":
+				buyerForm.checkRegistered();
+				break;
+				
+			case "register":
+				buyerForm.register(Integer.parseInt(inputs[1]));
+				break;
+				
+			case "accesspromotionlist":
+				buyerForm.accessPromotionList();
+				break;
+				
+			case "unsubscribe":
+				
+				
+			case "help":
+				System.out.println("Commands:\n"
+								 + "Search <Document_Type> <Document_Name>\n"
+								 + "PlaceOrder <Document_Type> <Document_Name>\n"
+								 + "MakePayments\n"
+								 + "Register <User_ID>\n"
+								 + "IsRegistered\n\n"
+								 + "If already a registered buyer:\n"
+								 + "AccessPromotionList\n"
+								 + "Unsubscribe\n");
+				break;
+				
+			default:
+				System.out.println("Input unrecognized, type 'help' for commands");
+				break;
+			}
+			
+		}
+		
+		sc.close();
 		
 	}
 }
