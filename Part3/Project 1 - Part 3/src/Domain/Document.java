@@ -81,4 +81,8 @@ public abstract class Document
 	public void setPrice(double price) {
 		this.price = price;
 	}
+	
+	public String toString() {
+		return name + "\t" + author + "\t" + docID + "\t" + price; 
+	}
 }
