@@ -43,9 +43,9 @@ public class BuyerForm extends Form {
 //			System.out.println(result);
 	}
 	
-	public void checkPayments() {
+	public void checkPayments(int userID) {
 		UserDatabaseController UDBC = (UserDatabaseController) userDBC;
-		System.out.println("Payments left: " + UDBC.checkPayments() );
+		System.out.println("Payments left: " + UDBC.checkPayments(userID) );
 	}
 	
 	// make a payment to outstanding payments
@@ -66,8 +66,8 @@ public class BuyerForm extends Form {
 	}
 	
 	// TODO registered buyer unregisters and becomes ordinary
-	public void unregister() {
-		
+	public void unsubscribe() {
+		System.out.println("Unsubscribe command is not finished");
 	}
 	
 	// access promotion list as a registered buyer
@@ -93,24 +93,26 @@ public class BuyerForm extends Form {
 			switch (inputs[0].toLowerCase()) {	
 				
 			case "search":
-					buyerForm.search(inputs[1], inputs[2]);
+				buyerForm.search(inputs[1], inputs[2]);
 				break;
 				
 			case "placeorder":
 				buyerForm.order(inputs[1], inputs[2]);
-//				???
-			
-			case "makepayments":
-				buyerForm.makePayment(Integer.parseInt(inputs[1]));
 				break;
 			
+			case "checkpayments":
+				buyerForm.checkPayments(buyerForm.ID);
 				
+			case "makepayments":
+				buyerForm.makePayment(buyerForm.ID, Double.parseDouble(inputs[2]));
+				break;
+			
 			case "isregistered":
 				buyerForm.checkRegistered();
 				break;
 				
 			case "register":
-				buyerForm.register(Integer.parseInt(inputs[1]));
+				buyerForm.register(buyerForm.ID);
 				break;
 				
 			case "accesspromotionlist":
@@ -124,8 +126,9 @@ public class BuyerForm extends Form {
 				System.out.println("Commands:\n"
 								 + "Search <Document_Type> <Document_Name>\n"
 								 + "PlaceOrder <Document_Type> <Document_Name>\n"
+								 + "CheckPayments\n"
 								 + "MakePayments\n"
-								 + "Register <User_ID>\n"
+								 + "Register\n"
 								 + "IsRegistered\n\n"
 								 + "If already a registered buyer:\n"
 								 + "AccessPromotionList\n"
