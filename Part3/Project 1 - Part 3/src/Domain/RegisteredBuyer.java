@@ -23,9 +23,8 @@ public class RegisteredBuyer extends OrdinaryBuyer implements Observer{
 	}
 	
 	public void unsubscribe() {
-		UserDatabaseController userDB = new UserDatabaseController();
-		userDB.unregister(this);
 		promotionList.remove(this); 
+		// move unsuscribe from here to the database
 	}
 	
 	public void update(ArrayList<Document> d) {
