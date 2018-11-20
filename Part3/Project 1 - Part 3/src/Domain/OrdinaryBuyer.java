@@ -37,8 +37,8 @@ public class OrdinaryBuyer extends User {
 	// might be the gui that does this but ill just add this in anyways
 	public void makePayments(double payment)
 	{
-		UserDatabaseController userDB = new UserDatabaseController();
-		userDB.makePayments(this, payment);
+//		UserDatabaseController userDB = new UserDatabaseController();
+//		userDB.makePayments(this, payment);
 	}
 	
 	public static void main(String[] args)

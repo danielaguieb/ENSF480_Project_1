@@ -79,13 +79,14 @@ public class BuyerForm extends Form {
 	public static void main(String[] args) {
 		
 		BuyerForm buyerForm = new BuyerForm("Dan", 12, new DocumentDatabaseController(), new UserDatabaseController(),true);
-		String lineIn;
-		String[] inputs;
 		Scanner sc = new Scanner(System.in);
+		String lineIn = sc.nextLine();
+
+		String[] inputs;
+	
+		boolean isDone = false;	
 		
-		for(lineIn = sc.nextLine(); lineIn.toLowerCase().compareTo("quit") == 0;
-				lineIn = sc.nextLine()) {
-			
+		while(!isDone) {
 			inputs = lineIn.split(" ");
 			switch (inputs[0].toLowerCase()) {	
 				
@@ -132,10 +133,15 @@ public class BuyerForm extends Form {
 								 + "Unsubscribe\n");
 				break;
 				
+			case "quit":
+				isDone = true;
+				
 			default:
 				System.out.println("Input unrecognized, type 'help' for commands");
 				break;
 			}
+			
+			lineIn = sc.nextLine();
 			
 		}
 		
