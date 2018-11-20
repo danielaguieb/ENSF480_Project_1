@@ -248,7 +248,7 @@ public class DocumentDatabaseController extends Controller
 	}
 	
 	// imma need the user's username
-	public void placeOrder(String docName, int userID)
+	public void placeOrder(String docName, int userID, String username)
 	{		
 		double price = getPriceDoc(docName);
 		
