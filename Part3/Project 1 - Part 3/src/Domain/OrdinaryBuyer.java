@@ -34,52 +34,6 @@ public class OrdinaryBuyer extends User {
 		// if thats the case then the registeredbuyer's 
 	}
 	
-	public void placeOrder(String docName)
-	{
-		// the idea here is that you can place an order for a doc by typing in the doc's name or whatever
-		// im going of the assumption that were just typing that name directly like its not displaying the 
-		// name in a JList we just now the name of the doc
-		
-		// im going to need to know the doc's price
-		
-		DocumentDatabaseController docDB = new DocumentDatabaseController();
-		double price = docDB.getPriceDoc(docName);
-		
-		String emailmessage = "You have placed an order for: " + docName + ". It costs " + price + ", and the money has been added to your outstanding_payments";
-		
-		UserDatabaseController userDB = new UserDatabaseController();
-		userDB.addToOutstandingPayments(this, docName, price);
-		
-		try {
-			InternetAddress internetaddress = new InternetAddress(username);
-			
-			Properties properties = new Properties();
-			properties.put("mail.smtp.starttls.enable", "true"); 
-			properties.put("mail.smtp.auth", "true"); 
-			properties.put("mail.smtp.host", "smtp.gmail.com"); 
-			properties.put("mail.smtp.port", "587"); 
-			
-			Session session = Session.getInstance(properties,
-					new javax.mail.Authenticator(){
-					 protected PasswordAuthentication getPasswordAuthentication() {
-					 return new PasswordAuthentication("amarhuzaifa@gmail.com", "Huzaifa@147");
-					 }
-					});
-			
-			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress(username));
-			message.setRecipient(Message.RecipientType.TO, internetaddress);
-			message.setSubject("Order Successfully Placed");
-			message.setText(emailmessage);
-			Transport.send(message); // Send the Email Message
-			
-		} catch (AddressException e) {
-			e.printStackTrace();
-		} catch (MessagingException e) {
-			e.printStackTrace();
-		}
-	}
-	
 	// might be the gui that does this but ill just add this in anyways
 	public void makePayments(double payment)
 	{

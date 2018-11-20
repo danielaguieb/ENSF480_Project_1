@@ -22,13 +22,13 @@ public class UserDatabaseController extends Controller
 		promotionList.setObservers(getPromotionBuyers());
 	}
 	
-	public void addToOutstandingPayments(OrdinaryBuyer buyer, String docName, double price)
+	public void addToOutstandingPayments(int userID, String docName, double price)
 	{
 		String sql = "SELECT * FROM " + buyerTable + " WHERE userID = ?";
 		ResultSet result;
 		try {
 			statement = jdbc_connection.prepareStatement(sql);
-			statement.setInt(1, buyer.getUserID());
+			statement.setInt(1, userID);
 			result = statement.executeQuery();
 			if(result.next()){
 				double currentPayments = result.getDouble("outstanding_payments");
@@ -38,7 +38,7 @@ public class UserDatabaseController extends Controller
 						" WHERE userID = ?";
 				statement = jdbc_connection.prepareStatement(sql);
 				statement.setDouble(1, newPayments);
-				statement.setInt(2, buyer.getUserID());
+				statement.setInt(2, userID);
 				statement.executeUpdate(); 
 			}
 			else {

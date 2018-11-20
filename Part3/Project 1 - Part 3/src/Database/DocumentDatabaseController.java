@@ -5,6 +5,16 @@ import Domain.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Properties;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 public class DocumentDatabaseController extends Controller
 {
@@ -230,6 +240,52 @@ public class DocumentDatabaseController extends Controller
 		} catch (SQLException e) { System.out.println("Error: Document's cannot be searched for");}
 		
 		return null;
+	}
+	
+	public boolean isPresent()
+	{
+		return false;
+	}
+	
+	// imma need the user's username
+	public void placeOrder(String docName, int userID)
+	{		
+		double price = getPriceDoc(docName);
+		
+		String emailmessage = "You have placed an order for: " + docName + ". It costs " + price + ", and the money has been added to your outstanding_payments";
+		
+		UserDatabaseController userDB = new UserDatabaseController();
+		// this function will need the user's ID
+		userDB.addToOutstandingPayments(userID, docName, price);
+		
+		try {
+			InternetAddress internetaddress = new InternetAddress(username);
+			
+			Properties properties = new Properties();
+			properties.put("mail.smtp.starttls.enable", "true"); 
+			properties.put("mail.smtp.auth", "true"); 
+			properties.put("mail.smtp.host", "smtp.gmail.com"); 
+			properties.put("mail.smtp.port", "587"); 
+			
+			Session session = Session.getInstance(properties,
+					new javax.mail.Authenticator(){
+					 protected PasswordAuthentication getPasswordAuthentication() {
+					 return new PasswordAuthentication("amarhuzaifa@gmail.com", "Huzaifa@147");
+					 }
+					});
+			
+			Message message = new MimeMessage(session);
+			message.setFrom(new InternetAddress(username));
+			message.setRecipient(Message.RecipientType.TO, internetaddress);
+			message.setSubject("Order Successfully Placed");
+			message.setText(emailmessage);
+			Transport.send(message); // Send the Email Message
+			
+		} catch (AddressException e) {
+			e.printStackTrace();
+		} catch (MessagingException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public ArrayList<Document> getPromotedDocuments()
