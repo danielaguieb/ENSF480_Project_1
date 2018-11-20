@@ -34,13 +34,10 @@ public class BuyerForm extends Form {
 	}
 	
 	// order a document if it exists
-	public void order(String docType, String docName) {
+	public void order(String docName, int userID, String username) {
 		DocumentDatabaseController docDBC = (DocumentDatabaseController) controller;
 		
-		// TODO 
-//		String result = docDBC.order(docName, docType);
-//		if (result!=null)
-//			System.out.println(result);
+		docDBC.placeOrder(docName, userID, username);
 	}
 	
 	public void checkPayments(int userID) {
@@ -97,14 +94,14 @@ public class BuyerForm extends Form {
 				break;
 				
 			case "placeorder":
-				buyerForm.order(inputs[1], inputs[2]);
+				buyerForm.order(inputs[1], buyerForm.ID, buyerForm.name);
 				break;
 			
 			case "checkpayments":
 				buyerForm.checkPayments(buyerForm.ID);
 				
 			case "makepayments":
-				buyerForm.makePayment(buyerForm.ID, Double.parseDouble(inputs[2]));
+				buyerForm.makePayment(buyerForm.ID, Double.parseDouble(inputs[1]));
 				break;
 			
 			case "isregistered":
@@ -127,7 +124,7 @@ public class BuyerForm extends Form {
 								 + "Search <Document_Type> <Document_Name>\n"
 								 + "PlaceOrder <Document_Type> <Document_Name>\n"
 								 + "CheckPayments\n"
-								 + "MakePayments\n"
+								 + "MakePayments <Payment_Amount>\n"
 								 + "Register\n"
 								 + "IsRegistered\n\n"
 								 + "If already a registered buyer:\n"
