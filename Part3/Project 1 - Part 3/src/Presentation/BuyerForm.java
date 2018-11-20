@@ -81,11 +81,10 @@ public class BuyerForm extends Form {
 		BuyerForm buyerForm = new BuyerForm("Dan", 12, new DocumentDatabaseController(), new UserDatabaseController(),true);
 		Scanner sc = new Scanner(System.in);
 		String lineIn = sc.nextLine();
-
 		String[] inputs;
-	
 		boolean isDone = false;	
-		
+
+		System.out.println("Enter 'help' for commands");
 		while(!isDone) {
 			inputs = lineIn.split(" ");
 			switch (inputs[0].toLowerCase()) {	
@@ -123,14 +122,17 @@ public class BuyerForm extends Form {
 			case "help":
 				System.out.println("Commands:\n"
 								 + "Search <Document_Type> <Document_Name>\n"
+								 + "[Document displayed as name, author, docID, and price]\n"
 								 + "PlaceOrder <Document_Type> <Document_Name>\n"
+								 + "[The possible document types are 'journal', 'magazine', and 'book']\n"
 								 + "CheckPayments\n"
 								 + "MakePayments <Payment_Amount>\n"
 								 + "Register\n"
 								 + "IsRegistered\n\n"
 								 + "If already a registered buyer:\n"
 								 + "AccessPromotionList\n"
-								 + "Unsubscribe\n");
+								 + "Unsubscribe\n\n"
+								 + "If finished, enter 'quit'\n");
 				break;
 				
 			case "quit":
