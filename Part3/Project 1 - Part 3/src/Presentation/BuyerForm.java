@@ -136,7 +136,9 @@ public class BuyerForm extends Form {
 				break;
 				
 			case "quit":
+				System.out.println("Exiting program...");
 				isDone = true;
+				break;
 				
 			default:
 				System.out.println("Input unrecognized, type 'help' for commands");
