@@ -84,7 +84,7 @@ public class BuyerForm extends Form {
 		String[] inputs;
 		boolean isDone = false;	
 
-		System.out.println("Enter 'help' for commands");
+		System.out.println("Enter 'help' for commands\n");
 		while(!isDone) {
 			try {
 				inputs = lineIn.split(" ");

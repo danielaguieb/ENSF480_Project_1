@@ -88,7 +88,7 @@ public class OperatorForm extends Form {
 		String[] inputs;
 		boolean isDone = false;	
 		
-		System.out.println("Enter 'help' for commandr");
+		System.out.println("Enter 'help' for commands\n");
 		while(!isDone) {
 			try {
 				inputs = lineIn.split(" ");
