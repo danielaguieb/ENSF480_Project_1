@@ -80,7 +80,7 @@ public class OperatorForm extends Form {
 			System.out.println("Unrecognized behaviour. Command not accepted");
 	}
 	
-	public void updateJournal(String name, String author, String pubDate, String publisher,
+	public void updateJournal(String name, String author, String pubDate, String publisher, int docID,
 			int isPromoted, double price, String co_contributors) {
 		DocumentDatabaseController docDBC = (DocumentDatabaseController) controller;
 		
@@ -89,24 +89,24 @@ public class OperatorForm extends Form {
 		for(int i=0; i<contributors.length; i++) {
 		co_contributers_list.add(contributors[i]);
 		}
-		Journal toSend = new Journal(name, author, pubDate, publisher, isPromoted, price, co_contributers_list);
+		Journal toSend = new Journal(docID, name, author, pubDate, publisher, isPromoted, price, co_contributers_list);
 		docDBC.updateDocuments(toSend);
 	}
 	
 	// update/edit exiting document info from the database
-		public void updateMagazine(String name, String author, String pubDate, String publisher,
+		public void updateMagazine(String name, String author, String pubDate, String publisher, int docID,
 				int isPromoted, double price, int isOngoing) {
 		DocumentDatabaseController docDBC = (DocumentDatabaseController) controller;
 		
-		Magazine toSend = new Magazine(name, author, pubDate, publisher, isPromoted, price, isOngoing);
+		Magazine toSend = new Magazine(docID, name, author, pubDate, publisher, isPromoted, price, isOngoing);
 		docDBC.updateDocuments(toSend);
 	}
 	
-	public void updateBook(String name, String author, String pubDate, String publisher,
+	public void updateBook(String name, String author, String pubDate, String publisher, int docID,
 			int isPromoted, double price, String genre, int isFiction) {
 		DocumentDatabaseController docDBC = (DocumentDatabaseController) controller;
 		
-		Book toSend = new Book(name, author, pubDate, publisher, isPromoted, price, genre, isFiction);
+		Book toSend = new Book(docID, name, author, pubDate, publisher, isPromoted, price, genre, isFiction);
 		docDBC.updateDocuments(toSend);
 	}
 	
@@ -143,15 +143,15 @@ public class OperatorForm extends Form {
 					break;
 					
 				case "updatejournal":
-					operatorForm.addJournal(inputs[1], inputs[2], inputs[3], inputs[4], Integer.parseInt(inputs[5]), Double.parseDouble(inputs[6]), inputs[7]);
+					operatorForm.updateJournal(inputs[1], inputs[2], inputs[3], inputs[4], inputs[5], Integer.parseInt(inputs[6]), Double.parseDouble(inputs[7]), inputs[8]);
 					break;
 				
 				case "updatemagazine":
-					operatorForm.addMagazine(inputs[1], inputs[2], inputs[3], inputs[4], Integer.parseInt(inputs[5]), Double.parseDouble(inputs[6]), Integer.parseInt(inputs[7]));
+					operatorForm.updateMagazine(inputs[1], inputs[2], inputs[3], inputs[4], inputs[5], Integer.parseInt(inputs[6]), Double.parseDouble(inputs[7]), Integer.parseInt(inputs[8]));
 					break;
 					
 				case "updatebook":
-					operatorForm.addBook(inputs[1], inputs[2], inputs[3], inputs[4], Integer.parseInt(inputs[5]), Double.parseDouble(inputs[6]), inputs[7], Integer.parseInt(inputs[8]));
+					operatorForm.updateBook(inputs[1], inputs[2], inputs[3], inputs[4], inputs[5], Integer.parseInt(inputs[6]), Double.parseDouble(inputs[7]), inputs[8], Integer.parseInt(inputs[9]));
 					break;
 					
 				case "help":
