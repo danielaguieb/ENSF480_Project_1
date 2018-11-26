@@ -62,9 +62,10 @@ public class BuyerForm extends Form {
 		}
 	}
 	
-	// TODO registered buyer unregisters and becomes ordinary
-	public void unsubscribe() {
-		System.out.println("Unsubscribe command is not finished");
+	// registered buyer unregisters and becomes ordinary
+	public void unsubscribe(int thisID){
+		UserDatabaseController UDBC = (UserDatabaseController) userDBC;
+		UDBC.unsubscribe(thisID);
 	}
 	
 	// access promotion list as a registered buyer
@@ -117,6 +118,8 @@ public class BuyerForm extends Form {
 					break;
 					
 				case "unsubscribe":
+					buyerForm.unsubscribe(Integer.parseInt(inputs[1]));
+					break;
 					
 					
 				case "help":
@@ -131,7 +134,7 @@ public class BuyerForm extends Form {
 									 + "IsRegistered\n\n"
 									 + "If already a registered buyer:\n"
 									 + "AccessPromotionList\n"
-									 + "Unsubscribe\n\n"
+									 + "Unsubscribe <Your_UserID>\n\n"
 									 + "If finished, enter 'quit'\n");
 					break;
 					
