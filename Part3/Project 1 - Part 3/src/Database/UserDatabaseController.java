@@ -149,6 +149,12 @@ public class UserDatabaseController extends Controller
 		return observers;
 	}
 	
+	public void unsubscribe(int userID) {
+		RegisteredBuyer registeredBuyer = new RegisteredBuyer(null, null, userID);
+		promotionList.remove(registeredBuyer); 
+		// move unsuscribe from here to the database
+	}
+	
 	//remove the name field maybe?
 	
 }

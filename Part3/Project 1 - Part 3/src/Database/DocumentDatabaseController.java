@@ -365,12 +365,6 @@ public class DocumentDatabaseController extends Controller
 		return -1;
 	}
 	
-	public void unsubscribe(int userID) {
-		RegisteredBuyer registeredBuyer = new RegisteredBuyer(null, null, userID);
-		promotionList.remove(registeredBuyer); 
-		// move unsuscribe from here to the database
-	}
-	
 	public static void main(String[] args)
 	{
 		//DocumentDatabaseController databaseController = new DocumentDatabaseController();
