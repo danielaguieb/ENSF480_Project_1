@@ -83,6 +83,7 @@ public class BuyerForm extends Form {
 		String lineIn = sc.nextLine();
 		String[] inputs;
 		boolean isDone = false;	
+		
 		while(!isDone) {
 			try {
 				inputs = lineIn.split(" ");
