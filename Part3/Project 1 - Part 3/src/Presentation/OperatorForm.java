@@ -143,15 +143,15 @@ public class OperatorForm extends Form {
 					break;
 					
 				case "updatejournal":
-					operatorForm.updateJournal(inputs[1], inputs[2], inputs[3], inputs[4], inputs[5], Integer.parseInt(inputs[6]), Double.parseDouble(inputs[7]), inputs[8]);
+					operatorForm.updateJournal(inputs[1], inputs[2], inputs[3], inputs[4], Integer.parseInt(inputs[5]), Integer.parseInt(inputs[6]), Double.parseDouble(inputs[7]), inputs[8]);
 					break;
 				
 				case "updatemagazine":
-					operatorForm.updateMagazine(inputs[1], inputs[2], inputs[3], inputs[4], inputs[5], Integer.parseInt(inputs[6]), Double.parseDouble(inputs[7]), Integer.parseInt(inputs[8]));
+					operatorForm.updateMagazine(inputs[1], inputs[2], inputs[3], inputs[4], Integer.parseInt(inputs[5]), Integer.parseInt(inputs[6]), Double.parseDouble(inputs[7]), Integer.parseInt(inputs[8]));
 					break;
 					
 				case "updatebook":
-					operatorForm.updateBook(inputs[1], inputs[2], inputs[3], inputs[4], inputs[5], Integer.parseInt(inputs[6]), Double.parseDouble(inputs[7]), inputs[8], Integer.parseInt(inputs[9]));
+					operatorForm.updateBook(inputs[1], inputs[2], inputs[3], inputs[4], Integer.parseInt(inputs[5]), Integer.parseInt(inputs[6]), Double.parseDouble(inputs[7]), inputs[8], Integer.parseInt(inputs[9]));
 					break;
 					
 				case "help":
@@ -166,12 +166,12 @@ public class OperatorForm extends Form {
 								     + "Search <Doc_Type> <Doc_Name>\n"
 									 + "[Document displayed as name, author, docID, and price]\n"
 								     + "Remove <Doc_Type> <Doc_ID>\n"
-								     + "UpdateJournal <Doc_Name> <Doc_Author> <Doc_PubDate> <Doc_Publisher> "
+								     + "UpdateJournal <Doc_Name> <Doc_Author> <Doc_PubDate> <Doc_Publisher> <Doc_ID>"
 								     	+ "<Doc_IsPromoted> <Doc_Price> <Doc_Co-contributors>\n"
 								     + "[Co-contributor list should be written in the format Name1;Name2;Name3...]\n"
-								     + "UpdateMagazine <Doc_Name> <Doc_Author> <Doc_PubDate> <Doc_Publisher> "
+								     + "UpdateMagazine <Doc_Name> <Doc_Author> <Doc_PubDate> <Doc_Publisher> <Doc_ID>"
 								     	+ "<Doc_isPromoted> <Doc_Price> <Doc_isOngoing>\n"
-								     + "UpdateBook <Doc_Name> <Doc_Author> <Doc_PubDate> <Doc_Publisher> "
+								     + "UpdateBook <Doc_Name> <Doc_Author> <Doc_PubDate> <Doc_Publisher> <Doc_ID>"
 								     	+ "<Doc_isPromoted> <Doc_Price> <Doc_Genre> <Doc_isFiction>\n"
 								     + "[For parameters with 'is', the appropriate argument is 1 for yes and 0 for no]\n"
 								     + "[The possible document types are 'journal', 'magazine', and 'book']\n\n"
