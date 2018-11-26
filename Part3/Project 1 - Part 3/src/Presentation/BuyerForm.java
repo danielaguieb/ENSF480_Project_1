@@ -79,7 +79,7 @@ public class BuyerForm extends Form {
 	
 	public static void main(String[] args) {
 		System.out.println("Enter 'help' for commands\n");
-		BuyerForm buyerForm = new BuyerForm("Dan", 12, new DocumentDatabaseController(), new UserDatabaseController(),true);
+		BuyerForm buyerForm = new BuyerForm("spacesloth605@gmail.com", 400, new DocumentDatabaseController(), new UserDatabaseController(),true);
 		Scanner sc = new Scanner(System.in);
 		String lineIn = sc.nextLine();
 		String[] inputs;
@@ -100,6 +100,7 @@ public class BuyerForm extends Form {
 				
 				case "checkpayments":
 					buyerForm.checkPayments(buyerForm.ID);
+					break;
 					
 				case "makepayments":
 					buyerForm.makePayment(buyerForm.ID, Double.parseDouble(inputs[1]));

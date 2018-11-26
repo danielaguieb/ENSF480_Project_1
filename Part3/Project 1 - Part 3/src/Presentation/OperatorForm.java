@@ -5,15 +5,19 @@ import java.util.Scanner;
 
 import Database.Controller;
 import Database.DocumentDatabaseController;
+import Database.UserDatabaseController;
 import Domain.Book;
 import Domain.Journal;
 import Domain.Magazine;
 
 public class OperatorForm extends Form {
+	private Controller userDBC;
 	
 	
-	public OperatorForm(String n, int i, Controller c) {
-		super(n, i, c);
+	
+	public OperatorForm(String n, int i, Controller doc_c, Controller user_c) {
+		super(n, i, doc_c);
+		userDBC = user_c;
 	}
 	
 	
@@ -59,15 +63,15 @@ public class OperatorForm extends Form {
 	public void remove(String docType, int docID) {
 		DocumentDatabaseController docDBC = (DocumentDatabaseController) controller;
 		
-		if(docType.compareTo("book") == 0) {
+		if(docType.toLowerCase().compareTo("book") == 0) {
 			Book toSend = new Book(docID, null, null, null, null, 0, 0, null, 0);
 			docDBC.removeDocuments(toSend);
 		}
-		else if(docType.compareTo("journal") == 0) {
+		else if(docType.toLowerCase().compareTo("journal") == 0) {
 			Journal toSend = new Journal(docID, null, null, null, null, 0, 0, null);
 			docDBC.removeDocuments(toSend);
 		}
-		else if(docType.compareTo("magazine") == 0) {
+		else if(docType.toLowerCase().compareTo("magazine") == 0) {
 			Magazine toSend = new Magazine(docID, null, null, null, null, 0, 0, 0);
 			docDBC.removeDocuments(toSend);
 		}
@@ -108,7 +112,7 @@ public class OperatorForm extends Form {
 	
 	public static void main(String[] args) {
 		System.out.println("Enter 'help' for commands\n");
-		OperatorForm operatorForm = new OperatorForm("Dan", 314, new DocumentDatabaseController());
+		OperatorForm operatorForm = new OperatorForm("Dan", 314, new DocumentDatabaseController(), new UserDatabaseController());
 		Scanner sc = new Scanner(System.in);
 		String lineIn = sc.nextLine();
 		String[] inputs;
