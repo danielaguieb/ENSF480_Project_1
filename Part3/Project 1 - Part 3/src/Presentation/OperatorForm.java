@@ -82,13 +82,13 @@ public class OperatorForm extends Form {
 	}
 	
 	public static void main(String[] args) {
+		System.out.println("Enter 'help' for commands\n");
 		OperatorForm operatorForm = new OperatorForm("Dan", 314, new DocumentDatabaseController());
 		Scanner sc = new Scanner(System.in);
 		String lineIn = sc.nextLine();
 		String[] inputs;
 		boolean isDone = false;	
 		
-		System.out.println("Enter 'help' for commands\n");
 		while(!isDone) {
 			try {
 				inputs = lineIn.split(" ");

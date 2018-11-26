@@ -77,14 +77,12 @@ public class BuyerForm extends Form {
 	}
 	
 	public static void main(String[] args) {
-		
+		System.out.println("Enter 'help' for commands\n");
 		BuyerForm buyerForm = new BuyerForm("Dan", 12, new DocumentDatabaseController(), new UserDatabaseController(),true);
 		Scanner sc = new Scanner(System.in);
 		String lineIn = sc.nextLine();
 		String[] inputs;
 		boolean isDone = false;	
-
-		System.out.println("Enter 'help' for commands\n");
 		while(!isDone) {
 			try {
 				inputs = lineIn.split(" ");
