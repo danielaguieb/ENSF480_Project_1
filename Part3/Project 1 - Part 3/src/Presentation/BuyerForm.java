@@ -121,9 +121,9 @@ public class BuyerForm extends Form {
 				
 			case "help":
 				System.out.println("Commands:\n"
-								 + "Search <Document_Type> <Document_Name>\n"
+								 + "Search <Doc_Type> <Doc_Name>\n"
 								 + "[Document displayed as name, author, docID, and price]\n"
-								 + "PlaceOrder <Document_Type> <Document_Name>\n"
+								 + "PlaceOrder <Doc_Type> <Doc_Name>\n"
 								 + "[The possible document types are 'journal', 'magazine', and 'book']\n"
 								 + "CheckPayments\n"
 								 + "MakePayments <Payment_Amount>\n"

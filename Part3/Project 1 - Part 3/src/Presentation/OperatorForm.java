@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 import Database.Controller;
 import Database.DocumentDatabaseController;
+import Domain.Book;
+import Domain.Document;
 
 public class OperatorForm extends Form {
 	
@@ -15,12 +17,37 @@ public class OperatorForm extends Form {
 	
 	// add documents to the database
 	public void add() {
+		DocumentDatabaseController docDBC = (DocumentDatabaseController) controller;
+		
 		
 	}
 	
-	// TODO remove existing documents from the database
-	public void remove() {
+	public void search(String docType, String docName) {
+		DocumentDatabaseController docDBC = (DocumentDatabaseController) controller;
 		
+		String result = docDBC.search(docName, docType);
+		if (result!=null)
+			System.out.println(result);
+	}
+	
+	// TODO remove existing documents from the database
+	public void remove(String docType, int docID) {
+		DocumentDatabaseController docDBC = (DocumentDatabaseController) controller;
+		
+		if(docType.compareTo("book") == 0) {
+			Book toSend = new Book(docID, null, null, null, null, 0, 0, null, 0);
+			docDBC.removeDocuments(toSend);
+		}
+		else if(docType.compareTo("journal") == 0) {
+			
+			
+		}
+		else if(docType.compareTo("magazine") == 0) {
+			
+		}
+		
+		else
+			System.out.println("Unrecognized behaviour. Command not accepted");
 	}
 	
 	// TODO update/edit exiting document info from the database
@@ -41,10 +68,20 @@ public class OperatorForm extends Form {
 			switch (inputs[0].toLowerCase()) {
 			
 			case "add":
+				operatorForm.add(inputs[1]);
 				
+				// TODO decide how choose different inputs for different doc types
+				// most likely, have three different Add <Doc_Type> <Doc_Name> ...
+				// and depending on <Doc_Type>, run create a different doc to send
+				
+				break;
+			
+			case "search":
+				operatorForm.search(inputs[1], inputs[2]);
 				break;
 				
 			case "remove":
+				operatorForm.remove(inputs[1], Integer.parseInt(inputs[2]));
 				break;
 				
 			case "update":
@@ -52,9 +89,14 @@ public class OperatorForm extends Form {
 				
 			case "help":
 				System.out.println("Commands:\n"
-							     + "Add //TODO solve ID issue\n"
-							     + "Remove //TODO find doc ID\n"
-							     + "Update // TODO should know info to update it\n\n"
+							     + "Add <Doc_Type> <Doc_Name> <Doc_Author> <Doc_PublishDate> <Doc_Publisher> <Doc_IsPromoted> <Doc_Price>\n"
+							     + "[//TODO SHOULD THE ABOVE CARE FOR MULTIPLE AUTHORS?\n"
+							     + "Date must be entered as //TODO DATE FORMAT???]\n"
+							     + "Search <Doc_Type> <Doc_Name>\n"
+								 + "[Document displayed as name, author, docID, and price]\n"
+							     + "Remove <Doc_Type> <Doc_ID>\n"
+							     + "Update <Doc_Type>\n"
+							     + "[The possible document types are 'journal', 'magazine', and 'book']\n\n"
 							     + "If finished, enter 'quit'\n");
 				// issue is that book id shouldn't be determined by
 				// the adder, it should just happen
