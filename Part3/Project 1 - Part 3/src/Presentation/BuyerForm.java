@@ -86,63 +86,71 @@ public class BuyerForm extends Form {
 
 		System.out.println("Enter 'help' for commands");
 		while(!isDone) {
-			inputs = lineIn.split(" ");
-			switch (inputs[0].toLowerCase()) {	
+			try {
+				inputs = lineIn.split(" ");
+				switch (inputs[0].toLowerCase()) {	
+					
+				case "search":
+					buyerForm.search(inputs[1], inputs[2]);
+					break;
+					
+				case "placeorder":
+					buyerForm.order(inputs[1], buyerForm.ID, buyerForm.name);
+					break;
 				
-			case "search":
-				buyerForm.search(inputs[1], inputs[2]);
-				break;
+				case "checkpayments":
+					buyerForm.checkPayments(buyerForm.ID);
+					
+				case "makepayments":
+					buyerForm.makePayment(buyerForm.ID, Double.parseDouble(inputs[1]));
+					break;
 				
-			case "placeorder":
-				buyerForm.order(inputs[1], buyerForm.ID, buyerForm.name);
-				break;
-			
-			case "checkpayments":
-				buyerForm.checkPayments(buyerForm.ID);
-				
-			case "makepayments":
-				buyerForm.makePayment(buyerForm.ID, Double.parseDouble(inputs[1]));
-				break;
-			
-			case "isregistered":
-				buyerForm.checkRegistered();
-				break;
-				
-			case "register":
-				buyerForm.register(buyerForm.ID);
-				break;
-				
-			case "accesspromotionlist":
-				buyerForm.accessPromotionList();
-				break;
-				
-			case "unsubscribe":
-				
-				
-			case "help":
-				System.out.println("Commands:\n"
-								 + "Search <Doc_Type> <Doc_Name>\n"
-								 + "[Document displayed as name, author, docID, and price]\n"
-								 + "PlaceOrder <Doc_Type> <Doc_Name>\n"
-								 + "[The possible document types are 'journal', 'magazine', and 'book']\n"
-								 + "CheckPayments\n"
-								 + "MakePayments <Payment_Amount>\n"
-								 + "Register\n"
-								 + "IsRegistered\n\n"
-								 + "If already a registered buyer:\n"
-								 + "AccessPromotionList\n"
-								 + "Unsubscribe\n\n"
-								 + "If finished, enter 'quit'\n");
-				break;
-				
-			case "quit":
-				System.out.println("Exiting program...");
-				isDone = true;
-				break;
-				
-			default:
-				System.out.println("Input unrecognized, type 'help' for commands");
-				break;
+				case "isregistered":
+					buyerForm.checkRegistered();
+					break;
+					
+				case "register":
+					buyerForm.register(buyerForm.ID);
+					break;
+					
+				case "accesspromotionlist":
+					buyerForm.accessPromotionList();
+					break;
+					
+				case "unsubscribe":
+					
+					
+				case "help":
+					System.out.println("Commands:\n"
+									 + "Search <Doc_Type> <Doc_Name>\n"
+									 + "[Document displayed as name, author, docID, and price]\n"
+									 + "PlaceOrder <Doc_Type> <Doc_Name>\n"
+									 + "[The possible document types are 'journal', 'magazine', and 'book']\n"
+									 + "CheckPayments\n"
+									 + "MakePayments <Payment_Amount>\n"
+									 + "Register\n"
+									 + "IsRegistered\n\n"
+									 + "If already a registered buyer:\n"
+									 + "AccessPromotionList\n"
+									 + "Unsubscribe\n\n"
+									 + "If finished, enter 'quit'\n");
+					break;
+					
+				case "quit":
+					System.out.println("Exiting program...");
+					isDone = true;
+					break;
+					
+				default:
+					System.out.println("Input unrecognized, type 'help' for commands");
+					break;
+				}
+			}
+			catch (IndexOutOfBoundsException e) {
+				System.out.println("Please check your arguments\n");
+			}
+			catch (Exception e) {
+				System.out.println("What is happening\n");
 			}
 			
 			lineIn = sc.nextLine();
