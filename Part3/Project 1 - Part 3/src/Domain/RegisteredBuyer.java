@@ -21,7 +21,7 @@ public class RegisteredBuyer extends OrdinaryBuyer implements Observer{
 	public RegisteredBuyer(String u, String p, int i) {
 		super(u, p, i);
 	}
-	
+
 	public void unsubscribe() {
 		promotionList.remove(this); 
 		// move unsuscribe from here to the database
